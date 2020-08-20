@@ -1,5 +1,6 @@
 package org.superfights.heromanagement.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,6 +18,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.jboss.logging.Logger;
 import org.superfights.heromanagement.entities.Hero;
 import org.superfights.heromanagement.services.HeroService;
@@ -30,6 +36,8 @@ public class HeroResource {
 	@Inject
 	HeroService heroService;
 
+	@Operation(summary = "Returns \"Hello Heroes!\" string, serves as a dummy api")
+	@APIResponse(responseCode = "200", content = @Content(mediaType = MediaType.TEXT_PLAIN, schema = @Schema(implementation = String.class)))
 	@GET
 	@Path("/hello")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -37,6 +45,8 @@ public class HeroResource {
 		return "Hello Heroes!";
 	}
 
+	@Operation(summary = "Returns a random hero")
+	@APIResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Hero.class, required = true)))
 	@GET
 	@Path("/random")
 	public Response getRandomHero() {
@@ -45,6 +55,9 @@ public class HeroResource {
 		return Response.ok(hero).build();
 	}
 
+	@Operation(summary = "Returns all the heroes from the database")
+	@APIResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Hero.class, type = SchemaType.ARRAY)))
+	@APIResponse(responseCode = "204", description = "No heroes")
 	@GET
 	public Response getAllHeroes() {
 		List<Hero> heroes = heroService.findAllHeroes();
@@ -52,6 +65,9 @@ public class HeroResource {
 		return Response.ok(heroes).build();
 	}
 
+	@Operation(summary = "Returns a hero for a given identifier")
+	@APIResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Hero.class)))
+	@APIResponse(responseCode = "204", description = "The hero is not found for a given identifier")
 	@GET
 	@Path("/{id}")
 	public Response getHero(@PathParam("id") Long id) {
@@ -65,6 +81,8 @@ public class HeroResource {
 		}
 	}
 
+	@Operation(summary = "Creates a valid hero")
+	@APIResponse(responseCode = "201", description = "The URI of the created hero", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = URI.class)))
 	@POST
 	public Response createHero(@Valid Hero hero, @Context UriInfo uriInfo) {
 		hero = heroService.persistHero(hero);
@@ -73,6 +91,8 @@ public class HeroResource {
 		return Response.created(builder.build()).build();
 	}
 
+	@Operation(summary = "Updates an exiting  hero")
+	@APIResponse(responseCode = "200", description = "The updated hero", content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Hero.class)))
 	@PUT
 	public Response updateHero(@Valid Hero hero) {
 		hero = heroService.updateHero(hero);
@@ -80,6 +100,8 @@ public class HeroResource {
 		return Response.ok(hero).build();
 	}
 
+	@Operation(summary = "Deletes an exiting hero")
+	@APIResponse(responseCode = "204")
 	@DELETE
 	@Path("/{id}")
 	public Response deleteHero(@PathParam("id") Long id) {

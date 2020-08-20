@@ -7,11 +7,15 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 import javax.validation.Valid;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.superfights.heromanagement.entities.Hero;
 
 @ApplicationScoped
 @Transactional(value = TxType.REQUIRED)
 public class HeroService {
+
+	@ConfigProperty(name = "level.multiplier", defaultValue = "1")
+	int levelMultiplier;
 
 	@Transactional(value = TxType.SUPPORTS)
 	public List<Hero> findAllHeroes() {
@@ -33,6 +37,7 @@ public class HeroService {
 	}
 
 	public Hero persistHero(@Valid Hero hero) {
+		hero.level = hero.level * levelMultiplier;
 		Hero.persist(hero);
 		return hero;
 	}

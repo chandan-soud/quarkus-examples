@@ -149,6 +149,16 @@ public class HeroResourceTest {
 		assertEquals(NB_HEROES, heroes.size());
 	}
 
+	@Test
+	void shouldPingOpenAPI() {
+		given().header(ACCEPT, APPLICATION_JSON).when().get("/openapi").then().statusCode(OK.getStatusCode());
+	}
+
+	@Test
+	void shouldPingSwaggerUI() {
+		given().when().get("/swagger-ui").then().statusCode(OK.getStatusCode());
+	}
+
 	private TypeRef<List<Hero>> getHeroTypeRef() {
 		return new TypeRef<List<Hero>>() {
 			// Kept empty on purpose

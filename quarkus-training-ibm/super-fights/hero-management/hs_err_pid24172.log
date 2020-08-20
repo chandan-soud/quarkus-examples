@@ -1,0 +1,1405 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 48234496 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2754), pid=24172, tid=0x00007fe66e375700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_252-b09) (build 1.8.0_252-b09)
+# Java VM: OpenJDK 64-Bit Server VM GraalVM CE 20.1.0 (25.252-b09-jvmci-20.1-b02 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fe6800ff000):  VMThread [stack: 0x00007fe66e276000,0x00007fe66e376000] [id=24178]
+
+Stack: [0x00007fe66e276000,0x00007fe66e376000],  sp=0x00007fe66e374450,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xb3349f]  VMError::report_and_die()+0x2af
+V  [libjvm.so+0x4e9f47]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x67
+V  [libjvm.so+0x973320]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x100
+V  [libjvm.so+0x96ad7f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x9ebf96]  PSVirtualSpace::expand_by(unsigned long)+0x56
+V  [libjvm.so+0x9ed228]  PSYoungGen::resize(unsigned long, unsigned long)+0xd8
+V  [libjvm.so+0x9e9796]  PSScavenge::invoke_no_policy()+0x1366
+V  [libjvm.so+0x9e9b3c]  PSScavenge::invoke()+0x4c
+V  [libjvm.so+0x999608]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x68
+V  [libjvm.so+0xb35113]  VM_ParallelGCFailedAllocation::doit()+0x93
+V  [libjvm.so+0xb3c176]  VM_Operation::evaluate()+0x46
+V  [libjvm.so+0xb39a26]  VMThread::evaluate_operation(VM_Operation*) [clone .constprop.32]+0xa6
+V  [libjvm.so+0xb3acd3]  VMThread::loop()+0x383
+V  [libjvm.so+0xb3b0fc]  VMThread::run()+0xac
+V  [libjvm.so+0x970a32]  java_start(Thread*)+0x102
+
+VM_Operation (0x00007fe6124e0820): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fe681a31000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000556c97252800 JavaThread "build-72" [_thread_blocked, id=24269, stack(0x00007fe6110d1000,0x00007fe6111d2000)]
+  0x00007fe681a53800 JavaThread "build-71" [_thread_blocked, id=24267, stack(0x00007fe6111d2000,0x00007fe6112d3000)]
+  0x00007fe681a52000 JavaThread "build-70" [_thread_blocked, id=24266, stack(0x00007fe6112d3000,0x00007fe6113d4000)]
+  0x00007fe681a50000 JavaThread "build-69" [_thread_blocked, id=24265, stack(0x00007fe6113d4000,0x00007fe6114d5000)]
+  0x00007fe681a4e000 JavaThread "build-68" [_thread_blocked, id=24264, stack(0x00007fe6114d5000,0x00007fe6115d6000)]
+  0x00007fe681a4b800 JavaThread "build-67" [_thread_blocked, id=24263, stack(0x00007fe6115d6000,0x00007fe6116d7000)]
+  0x00007fe681a49800 JavaThread "build-66" [_thread_blocked, id=24262, stack(0x00007fe6116d7000,0x00007fe6117d8000)]
+  0x00007fe681a48000 JavaThread "build-65" [_thread_blocked, id=24261, stack(0x00007fe6117d8000,0x00007fe6118d9000)]
+  0x00007fe681a46000 JavaThread "build-64" [_thread_blocked, id=24260, stack(0x00007fe6118d9000,0x00007fe6119da000)]
+  0x00007fe681a44000 JavaThread "build-63" [_thread_blocked, id=24259, stack(0x00007fe6119da000,0x00007fe611adb000)]
+  0x00007fe681a42000 JavaThread "build-62" [_thread_blocked, id=24258, stack(0x00007fe611adb000,0x00007fe611bdc000)]
+  0x00007fe681a40000 JavaThread "build-61" [_thread_blocked, id=24257, stack(0x00007fe611bdc000,0x00007fe611cdd000)]
+  0x00007fe681a3e000 JavaThread "build-60" [_thread_blocked, id=24256, stack(0x00007fe611cdd000,0x00007fe611dde000)]
+  0x00007fe681a3c000 JavaThread "build-59" [_thread_blocked, id=24255, stack(0x00007fe611dde000,0x00007fe611edf000)]
+  0x00007fe681a3a000 JavaThread "build-58" [_thread_blocked, id=24254, stack(0x00007fe611edf000,0x00007fe611fe0000)]
+  0x00007fe681a38800 JavaThread "build-57" [_thread_blocked, id=24253, stack(0x00007fe611fe0000,0x00007fe6120e1000)]
+  0x00007fe681a36800 JavaThread "build-56" [_thread_blocked, id=24252, stack(0x00007fe6120e1000,0x00007fe6121e2000)]
+  0x00007fe681a35000 JavaThread "build-55" [_thread_blocked, id=24251, stack(0x00007fe6121e2000,0x00007fe6122e3000)]
+  0x00007fe681a33000 JavaThread "build-54" [_thread_blocked, id=24250, stack(0x00007fe6122e3000,0x00007fe6123e4000)]
+  0x00007fe681a31000 JavaThread "build-53" [_thread_blocked, id=24249, stack(0x00007fe6123e4000,0x00007fe6124e5000)]
+  0x00007fe681a2f800 JavaThread "build-52" [_thread_blocked, id=24248, stack(0x00007fe6124e5000,0x00007fe6125e6000)]
+  0x00007fe681a2d800 JavaThread "build-51" [_thread_blocked, id=24247, stack(0x00007fe6125e6000,0x00007fe6126e7000)]
+  0x00007fe681a2b800 JavaThread "build-50" [_thread_blocked, id=24246, stack(0x00007fe6126e7000,0x00007fe6127e8000)]
+  0x00007fe681a29800 JavaThread "build-49" [_thread_blocked, id=24245, stack(0x00007fe6127e8000,0x00007fe6128e9000)]
+  0x00007fe681a27800 JavaThread "build-48" [_thread_blocked, id=24244, stack(0x00007fe6128e9000,0x00007fe6129ea000)]
+  0x00007fe681a25800 JavaThread "build-47" [_thread_blocked, id=24243, stack(0x00007fe6129ea000,0x00007fe612aeb000)]
+  0x00007fe681a23800 JavaThread "build-46" [_thread_blocked, id=24242, stack(0x00007fe612aeb000,0x00007fe612bec000)]
+  0x00007fe681a21800 JavaThread "build-45" [_thread_blocked, id=24241, stack(0x00007fe612bec000,0x00007fe612ced000)]
+  0x00007fe681a1f800 JavaThread "build-44" [_thread_blocked, id=24240, stack(0x00007fe612ced000,0x00007fe612dee000)]
+  0x00007fe681a1d800 JavaThread "build-43" [_thread_blocked, id=24239, stack(0x00007fe612dee000,0x00007fe612eef000)]
+  0x00007fe681a1c000 JavaThread "build-42" [_thread_blocked, id=24238, stack(0x00007fe612eef000,0x00007fe612ff0000)]
+  0x00007fe681a1a000 JavaThread "build-41" [_thread_blocked, id=24237, stack(0x00007fe612ff0000,0x00007fe6130f1000)]
+  0x00007fe681a18000 JavaThread "build-40" [_thread_blocked, id=24236, stack(0x00007fe6130f1000,0x00007fe6131f2000)]
+  0x00007fe681a16000 JavaThread "build-39" [_thread_blocked, id=24235, stack(0x00007fe6131f2000,0x00007fe6132f3000)]
+  0x00007fe681a14000 JavaThread "build-38" [_thread_blocked, id=24234, stack(0x00007fe6132f3000,0x00007fe6133f4000)]
+  0x00007fe681a12800 JavaThread "build-37" [_thread_blocked, id=24233, stack(0x00007fe6133f4000,0x00007fe6134f5000)]
+  0x00007fe681a10800 JavaThread "build-36" [_thread_blocked, id=24232, stack(0x00007fe6134f5000,0x00007fe6135f6000)]
+  0x00007fe681a0e800 JavaThread "build-35" [_thread_blocked, id=24231, stack(0x00007fe6135f6000,0x00007fe6136f7000)]
+  0x00007fe681a0c800 JavaThread "build-34" [_thread_blocked, id=24230, stack(0x00007fe6136f7000,0x00007fe6137f8000)]
+  0x00007fe681a0a800 JavaThread "build-33" [_thread_blocked, id=24229, stack(0x00007fe6137f8000,0x00007fe6138f9000)]
+  0x00007fe681a09000 JavaThread "build-32" [_thread_blocked, id=24228, stack(0x00007fe6138f9000,0x00007fe6139fa000)]
+  0x00007fe681a07000 JavaThread "build-31" [_thread_blocked, id=24227, stack(0x00007fe6139fa000,0x00007fe613afb000)]
+  0x00007fe681a05000 JavaThread "build-30" [_thread_blocked, id=24226, stack(0x00007fe613afb000,0x00007fe613bfc000)]
+  0x00007fe681a03000 JavaThread "build-29" [_thread_blocked, id=24225, stack(0x00007fe613bfc000,0x00007fe613cfd000)]
+  0x00007fe681a01000 JavaThread "build-28" [_thread_blocked, id=24224, stack(0x00007fe613cfd000,0x00007fe613dfe000)]
+  0x00007fe6819ff000 JavaThread "build-27" [_thread_blocked, id=24223, stack(0x00007fe613dfe000,0x00007fe613eff000)]
+  0x00007fe6819fd000 JavaThread "build-26" [_thread_blocked, id=24222, stack(0x00007fe613eff000,0x00007fe614000000)]
+  0x00007fe6819fb800 JavaThread "build-25" [_thread_blocked, id=24221, stack(0x00007fe6180e7000,0x00007fe6181e8000)]
+  0x00007fe6819f9800 JavaThread "build-24" [_thread_blocked, id=24220, stack(0x00007fe6181e8000,0x00007fe6182e9000)]
+  0x00007fe6819f7800 JavaThread "build-23" [_thread_blocked, id=24219, stack(0x00007fe6182e9000,0x00007fe6183ea000)]
+  0x00007fe6819f5800 JavaThread "build-22" [_thread_blocked, id=24218, stack(0x00007fe6183ea000,0x00007fe6184eb000)]
+  0x00007fe6819f3800 JavaThread "build-21" [_thread_blocked, id=24217, stack(0x00007fe6184eb000,0x00007fe6185ec000)]
+  0x00007fe6819f1800 JavaThread "build-20" [_thread_blocked, id=24216, stack(0x00007fe6185ec000,0x00007fe6186ed000)]
+  0x00007fe6819ef800 JavaThread "build-19" [_thread_blocked, id=24215, stack(0x00007fe6186ed000,0x00007fe6187ee000)]
+  0x00007fe6819ed800 JavaThread "build-18" [_thread_blocked, id=24214, stack(0x00007fe6187ee000,0x00007fe6188ef000)]
+  0x00007fe6819ec000 JavaThread "build-17" [_thread_blocked, id=24213, stack(0x00007fe6188ef000,0x00007fe6189f0000)]
+  0x00007fe6819ea000 JavaThread "build-16" [_thread_blocked, id=24212, stack(0x00007fe6189f0000,0x00007fe618af1000)]
+  0x00007fe6819e8000 JavaThread "build-15" [_thread_blocked, id=24211, stack(0x00007fe618af1000,0x00007fe618bf2000)]
+  0x00007fe6819e6000 JavaThread "build-14" [_thread_blocked, id=24210, stack(0x00007fe618bf2000,0x00007fe618cf3000)]
+  0x00007fe6819e4000 JavaThread "build-13" [_thread_blocked, id=24209, stack(0x00007fe618cf3000,0x00007fe618df4000)]
+  0x00007fe6819e2000 JavaThread "build-12" [_thread_blocked, id=24208, stack(0x00007fe618df4000,0x00007fe618ef5000)]
+  0x00007fe6819e0000 JavaThread "build-11" [_thread_blocked, id=24207, stack(0x00007fe618ef5000,0x00007fe618ff6000)]
+  0x00007fe6819de000 JavaThread "build-10" [_thread_blocked, id=24206, stack(0x00007fe618ff6000,0x00007fe6190f7000)]
+  0x00007fe6819dc800 JavaThread "build-9" [_thread_blocked, id=24205, stack(0x00007fe6190f7000,0x00007fe6191f8000)]
+  0x00007fe6819da800 JavaThread "build-8" [_thread_blocked, id=24204, stack(0x00007fe6191f8000,0x00007fe6192f9000)]
+  0x00007fe6819d8800 JavaThread "build-7" [_thread_blocked, id=24203, stack(0x00007fe6192f9000,0x00007fe6193fa000)]
+  0x00007fe6819d6800 JavaThread "build-6" [_thread_blocked, id=24202, stack(0x00007fe6193fa000,0x00007fe6194fb000)]
+  0x00007fe6819d4800 JavaThread "build-5" [_thread_blocked, id=24201, stack(0x00007fe6194fb000,0x00007fe6195fc000)]
+  0x00007fe6819d2800 JavaThread "build-4" [_thread_blocked, id=24200, stack(0x00007fe6195fc000,0x00007fe6196fd000)]
+  0x00007fe6819d0800 JavaThread "build-3" [_thread_blocked, id=24199, stack(0x00007fe6196fd000,0x00007fe6197fe000)]
+  0x00007fe6819cf800 JavaThread "build-2" [_thread_blocked, id=24198, stack(0x00007fe6197fe000,0x00007fe6198ff000)]
+  0x00007fe6819cf000 JavaThread "build-1" [_thread_blocked, id=24197, stack(0x00007fe6198ff000,0x00007fe619a00000)]
+  0x00007fe680d14800 JavaThread "surefire-forkedjvm-command-thread" daemon [_thread_in_native, id=24192, stack(0x00007fe63b8ff000,0x00007fe63ba00000)]
+  0x00007fe6540f9800 JavaThread "Libgraal MBean Registration" daemon [_thread_blocked, id=24190, stack(0x00007fe66cbc4000,0x00007fe66ccc5000)]
+  0x00007fe680147800 JavaThread "Service Thread" daemon [_thread_blocked, id=24186, stack(0x00007fe66d8d4000,0x00007fe66d9d5000)]
+  0x00007fe680143000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=24185, stack(0x00007fe66d9d6000,0x00007fe66dbd6000)]
+  0x00007fe680140000 JavaThread "JVMCI-native CompilerThread0" daemon [_thread_blocked, id=24184, stack(0x00007fe66dbd7000,0x00007fe66ddd7000)]
+  0x00007fe68013e800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=24183, stack(0x00007fe66ddd7000,0x00007fe66ded8000)]
+  0x00007fe68010b000 JavaThread "Finalizer" daemon [_thread_blocked, id=24182, stack(0x00007fe66e073000,0x00007fe66e174000)]
+  0x00007fe680106800 JavaThread "Reference Handler" daemon [_thread_blocked, id=24179, stack(0x00007fe66e174000,0x00007fe66e275000)]
+  0x00007fe68000b000 JavaThread "main" [_thread_blocked, id=24174, stack(0x00007fe687b6b000,0x00007fe687c6b000)]
+
+Other Threads:
+=>0x00007fe6800ff000 VMThread [stack: 0x00007fe66e276000,0x00007fe66e376000] [id=24178]
+  0x00007fe68014c000 WatcherThread [stack: 0x00007fe66d7d4000,0x00007fe66d8d4000] [id=24187]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fe680007690] Threads_lock - owner thread: 0x00007fe6800ff000
+[0x00007fe680007b90] Heap_lock - owner thread: 0x00007fe681a31000
+
+heap address: 0x00000000cca00000, size: 822 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 194560K, used 27703K [0x00000000eee00000, 0x00000000fca00000, 0x0000000100000000)
+  eden space 165888K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f9000000)
+  from space 28672K, 96% used [0x00000000f9000000,0x00000000fab0dfa0,0x00000000fac00000)
+  to   space 28160K, 0% used [0x00000000fac00000,0x00000000fac00000,0x00000000fc780000)
+ ParOldGen       total 91136K, used 40285K [0x00000000cca00000, 0x00000000d2300000, 0x00000000eee00000)
+  object space 91136K, 44% used [0x00000000cca00000,0x00000000cf157488,0x00000000d2300000)
+ Metaspace       used 33584K, capacity 35230K, committed 35456K, reserved 1081344K
+  class space    used 3793K, capacity 4169K, committed 4224K, reserved 1048576K
+
+Card table byte_map: [0x00007fe684532000,0x00007fe6846ce000] byte_map_base: 0x00007fe683ecd000
+
+Marking Bits: (ParMarkBitMap*) 0x00007fe686e5db80
+ Begin Bits: [0x00007fe66f650000, 0x00007fe670328000)
+ End Bits:   [0x00007fe670328000, 0x00007fe671000000)
+
+Polling page: 0x00007fe687c86000
+
+CodeCache: size=245760Kb used=14092Kb max_used=14092Kb free=231667Kb
+ bounds [0x00007fe671000000, 0x00007fe671dd0000, 0x00007fe680000000]
+ total_blobs=4607 nmethods=4142 adapters=377
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 19.256 Thread 0x00007fe680143000 nmethod 4743 0x00007fe671dcbcd0 code [0x00007fe671dcbe80, 0x00007fe671dcc1f8]
+Event: 19.256 Thread 0x00007fe680143000 4745       3       org.objectweb.asm.MethodWriter::computeMethodInfoSize (571 bytes)
+Event: 19.263 Thread 0x00007fe680143000 nmethod 4745 0x00007fe671dcc390 code [0x00007fe671dcc6a0, 0x00007fe671dcd688]
+Event: 19.263 Thread 0x00007fe680143000 4747       3       org.objectweb.asm.AnnotationWriter::putAnnotations (67 bytes)
+Event: 19.265 Thread 0x00007fe680143000 nmethod 4747 0x00007fe671dcdd50 code [0x00007fe671dcdf40, 0x00007fe671dce3d8]
+Event: 19.265 Thread 0x00007fe680143000 4746       3       org.objectweb.asm.Attribute::putAttributes (78 bytes)
+Event: 19.266 Thread 0x00007fe680143000 nmethod 4746 0x00007fe671dce650 code [0x00007fe671dce880, 0x00007fe671dcedf8]
+Event: 19.266 Thread 0x00007fe680143000 4748       3       org.objectweb.asm.MethodWriter::hasFrames (13 bytes)
+Event: 19.266 Thread 0x00007fe680143000 nmethod 4748 0x00007fe671dcf0d0 code [0x00007fe671dcf240, 0x00007fe671dcf3f0]
+Event: 19.266 Thread 0x00007fe680143000 4749       3       org.objectweb.asm.MethodWriter::putMethodInfo (1274 bytes)
+
+GC Heap History (10 events):
+Event: 12.850 GC heap after
+Heap after GC invocations=12 (full 0):
+ PSYoungGen      total 136704K, used 12274K [0x00000000eee00000, 0x00000000f9300000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f6780000)
+  from space 12288K, 99% used [0x00000000f7a00000,0x00000000f85fc9d0,0x00000000f8600000)
+  to   space 18944K, 0% used [0x00000000f6780000,0x00000000f6780000,0x00000000f7a00000)
+ ParOldGen       total 37376K, used 36513K [0x00000000cca00000, 0x00000000cee80000, 0x00000000eee00000)
+  object space 37376K, 97% used [0x00000000cca00000,0x00000000ceda8410,0x00000000cee80000)
+ Metaspace       used 18645K, capacity 19784K, committed 19968K, reserved 1067008K
+  class space    used 1936K, capacity 2230K, committed 2304K, reserved 1048576K
+}
+Event: 12.852 GC heap before
+{Heap before GC invocations=13 (full 1):
+ PSYoungGen      total 136704K, used 12274K [0x00000000eee00000, 0x00000000f9300000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f6780000)
+  from space 12288K, 99% used [0x00000000f7a00000,0x00000000f85fc9d0,0x00000000f8600000)
+  to   space 18944K, 0% used [0x00000000f6780000,0x00000000f6780000,0x00000000f7a00000)
+ ParOldGen       total 37376K, used 36513K [0x00000000cca00000, 0x00000000cee80000, 0x00000000eee00000)
+  object space 37376K, 97% used [0x00000000cca00000,0x00000000ceda8410,0x00000000cee80000)
+ Metaspace       used 18645K, capacity 19784K, committed 19968K, reserved 1067008K
+  class space    used 1936K, capacity 2230K, committed 2304K, reserved 1048576K
+Event: 13.345 GC heap after
+Heap after GC invocations=13 (full 1):
+ PSYoungGen      total 136704K, used 8544K [0x00000000eee00000, 0x00000000f9300000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f6780000)
+  from space 12288K, 69% used [0x00000000f7a00000,0x00000000f8258100,0x00000000f8600000)
+  to   space 18944K, 0% used [0x00000000f6780000,0x00000000f6780000,0x00000000f7a00000)
+ ParOldGen       total 68608K, used 37033K [0x00000000cca00000, 0x00000000d0d00000, 0x00000000eee00000)
+  object space 68608K, 53% used [0x00000000cca00000,0x00000000cee2a5e0,0x00000000d0d00000)
+ Metaspace       used 18564K, capacity 19664K, committed 19968K, reserved 1067008K
+  class space    used 1926K, capacity 2190K, committed 2304K, reserved 1048576K
+}
+Event: 14.556 GC heap before
+{Heap before GC invocations=14 (full 1):
+ PSYoungGen      total 136704K, used 132960K [0x00000000eee00000, 0x00000000f9300000, 0x0000000100000000)
+  eden space 124416K, 100% used [0x00000000eee00000,0x00000000f6780000,0x00000000f6780000)
+  from space 12288K, 69% used [0x00000000f7a00000,0x00000000f8258100,0x00000000f8600000)
+  to   space 18944K, 0% used [0x00000000f6780000,0x00000000f6780000,0x00000000f7a00000)
+ ParOldGen       total 68608K, used 37033K [0x00000000cca00000, 0x00000000d0d00000, 0x00000000eee00000)
+  object space 68608K, 53% used [0x00000000cca00000,0x00000000cee2a5e0,0x00000000d0d00000)
+ Metaspace       used 19676K, capacity 20820K, committed 21120K, reserved 1069056K
+  class space    used 2028K, capacity 2302K, committed 2432K, reserved 1048576K
+Event: 14.749 GC heap after
+Heap after GC invocations=14 (full 1):
+ PSYoungGen      total 143360K, used 18912K [0x00000000eee00000, 0x00000000fc780000, 0x0000000100000000)
+  eden space 124416K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f6780000)
+  from space 18944K, 99% used [0x00000000f6780000,0x00000000f79f8030,0x00000000f7a00000)
+  to   space 28160K, 0% used [0x00000000fac00000,0x00000000fac00000,0x00000000fc780000)
+ ParOldGen       total 68608K, used 53182K [0x00000000cca00000, 0x00000000d0d00000, 0x00000000eee00000)
+  object space 68608K, 77% used [0x00000000cca00000,0x00000000cfdef858,0x00000000d0d00000)
+ Metaspace       used 19676K, capacity 20820K, committed 21120K, reserved 1069056K
+  class space    used 2028K, capacity 2302K, committed 2432K, reserved 1048576K
+}
+Event: 16.653 GC heap before
+{Heap before GC invocations=15 (full 1):
+ PSYoungGen      total 143360K, used 143328K [0x00000000eee00000, 0x00000000fc780000, 0x0000000100000000)
+  eden space 124416K, 100% used [0x00000000eee00000,0x00000000f6780000,0x00000000f6780000)
+  from space 18944K, 99% used [0x00000000f6780000,0x00000000f79f8030,0x00000000f7a00000)
+  to   space 28160K, 0% used [0x00000000fac00000,0x00000000fac00000,0x00000000fc780000)
+ ParOldGen       total 68608K, used 53182K [0x00000000cca00000, 0x00000000d0d00000, 0x00000000eee00000)
+  object space 68608K, 77% used [0x00000000cca00000,0x00000000cfdef858,0x00000000d0d00000)
+ Metaspace       used 24940K, capacity 26486K, committed 26752K, reserved 1073152K
+  class space    used 2740K, capacity 3077K, committed 3200K, reserved 1048576K
+Event: 16.773 GC heap after
+Heap after GC invocations=15 (full 1):
+ PSYoungGen      total 194048K, used 16251K [0x00000000eee00000, 0x00000000fca00000, 0x0000000100000000)
+  eden space 165888K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f9000000)
+  from space 28160K, 57% used [0x00000000fac00000,0x00000000fbbded58,0x00000000fc780000)
+  to   space 28672K, 0% used [0x00000000f9000000,0x00000000f9000000,0x00000000fac00000)
+ ParOldGen       total 70144K, used 69542K [0x00000000cca00000, 0x00000000d0e80000, 0x00000000eee00000)
+  object space 70144K, 99% used [0x00000000cca00000,0x00000000d0de9878,0x00000000d0e80000)
+ Metaspace       used 24940K, capacity 26486K, committed 26752K, reserved 1073152K
+  class space    used 2740K, capacity 3077K, committed 3200K, reserved 1048576K
+}
+Event: 16.773 GC heap before
+{Heap before GC invocations=16 (full 2):
+ PSYoungGen      total 194048K, used 16251K [0x00000000eee00000, 0x00000000fca00000, 0x0000000100000000)
+  eden space 165888K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f9000000)
+  from space 28160K, 57% used [0x00000000fac00000,0x00000000fbbded58,0x00000000fc780000)
+  to   space 28672K, 0% used [0x00000000f9000000,0x00000000f9000000,0x00000000fac00000)
+ ParOldGen       total 70144K, used 69542K [0x00000000cca00000, 0x00000000d0e80000, 0x00000000eee00000)
+  object space 70144K, 99% used [0x00000000cca00000,0x00000000d0de9878,0x00000000d0e80000)
+ Metaspace       used 24940K, capacity 26486K, committed 26752K, reserved 1073152K
+  class space    used 2740K, capacity 3077K, committed 3200K, reserved 1048576K
+Event: 17.105 GC heap after
+Heap after GC invocations=16 (full 2):
+ PSYoungGen      total 194048K, used 0K [0x00000000eee00000, 0x00000000fca00000, 0x0000000100000000)
+  eden space 165888K, 0% used [0x00000000eee00000,0x00000000eee00000,0x00000000f9000000)
+  from space 28160K, 0% used [0x00000000fac00000,0x00000000fac00000,0x00000000fc780000)
+  to   space 28672K, 0% used [0x00000000f9000000,0x00000000f9000000,0x00000000fac00000)
+ ParOldGen       total 91136K, used 40277K [0x00000000cca00000, 0x00000000d2300000, 0x00000000eee00000)
+  object space 91136K, 44% used [0x00000000cca00000,0x00000000cf155488,0x00000000d2300000)
+ Metaspace       used 24940K, capacity 26486K, committed 26752K, reserved 1073152K
+  class space    used 2740K, capacity 3077K, committed 3200K, reserved 1048576K
+}
+Event: 19.278 GC heap before
+{Heap before GC invocations=17 (full 2):
+ PSYoungGen      total 194048K, used 165888K [0x00000000eee00000, 0x00000000fca00000, 0x0000000100000000)
+  eden space 165888K, 100% used [0x00000000eee00000,0x00000000f9000000,0x00000000f9000000)
+  from space 28160K, 0% used [0x00000000fac00000,0x00000000fac00000,0x00000000fc780000)
+  to   space 28672K, 0% used [0x00000000f9000000,0x00000000f9000000,0x00000000fac00000)
+ ParOldGen       total 91136K, used 40277K [0x00000000cca00000, 0x00000000d2300000, 0x00000000eee00000)
+  object space 91136K, 44% used [0x00000000cca00000,0x00000000cf155488,0x00000000d2300000)
+ Metaspace       used 33584K, capacity 35230K, committed 35456K, reserved 1081344K
+  class space    used 3793K, capacity 4169K, committed 4224K, reserved 1048576K
+
+Class unloading (10 events):
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.Parser 0x00000001001a5028
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.maven.cli.CleanArgument 0x00000001001a4bf0
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.OptionValidator 0x00000001001a4a10
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.Option$Builder 0x00000001001a4828
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.Option 0x00000001001a4468
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.Options 0x00000001001a4200
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.CommandLineParser 0x00000001001a4028
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.maven.cli.CLIManager 0x00000001001a3c88
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded org.apache.commons.cli.ParseException 0x00000001001a3a08
+Event: 13.008 Thread 0x00007fe6800ff000 unloaded io.quarkus.bootstrap.resolver.maven.options.BootstrapMavenOptionsParser 0x00000001001a3828
+
+Deoptimization events (10 events):
+Event: 17.107 Thread 0x00007fe6819cf000 Uncommon trap: reason=null_assert_or_unreached0 action=reinterpret pc=0x00007fe671c7fdca method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 152
+Event: 17.125 Thread 0x00007fe6819de000 Uncommon trap: reason=null_check action=reinterpret pc=0x00007fe671b8464d method=java.lang.StringCoding.deref(Ljava/lang/ThreadLocal;)Ljava/lang/Object; @ 4
+Event: 18.233 Thread 0x00007fe6819ec000 Uncommon trap: reason=intrinsic_or_type_checked_inlining action=reinterpret pc=0x00007fe6715ae885 method=org.jboss.jandex.StrongInternPool.eq(Ljava/lang/Object;Ljava/lang/Object;)Z @ 0
+Event: 18.645 Thread 0x00007fe681a1f800 Uncommon trap: reason=null_assert_or_unreached0 action=reinterpret pc=0x00007fe671cd6bc5 method=java.util.regex.Pattern.<init>(Ljava/lang/String;I)V @ 9
+Event: 18.691 Thread 0x00007fe6819f7800 Uncommon trap: reason=null_assert_or_unreached0 action=reinterpret pc=0x00007fe671a04c6a method=org.objectweb.asm.Frame.merge(Lorg/objectweb/asm/SymbolTable;I[II)Z @ 0
+Event: 18.772 Thread 0x00007fe681a0c800 Uncommon trap: reason=intrinsic_or_type_checked_inlining action=reinterpret pc=0x00007fe6719d6a85 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet.iterator()Ljava/util/Iterator; @ 0
+Event: 18.772 Thread 0x00007fe681a0c800 Uncommon trap: reason=intrinsic_or_type_checked_inlining action=reinterpret pc=0x00007fe67158e52b method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.hasNext()Z @ 0
+Event: 18.806 Thread 0x00007fe681a0c800 Uncommon trap: reason=intrinsic_or_type_checked_inlining action=reinterpret pc=0x00007fe6719403e5 method=java.util.Collections$UnmodifiableMap.size()I @ 0
+Event: 18.825 Thread 0x00007fe681a0c800 Uncommon trap: reason=null_assert_or_unreached0 action=reinterpret pc=0x00007fe671426673 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 222
+Event: 18.832 Thread 0x00007fe6819f7800 Uncommon trap: reason=null_assert_or_unreached0 action=reinterpret pc=0x00007fe6716381e5 method=org.objectweb.asm.Frame.merge(Lorg/objectweb/asm/SymbolTable;I[II)Z @ 39
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 19.130 Thread 0x00007fe6819ef800 Exception <a 'sun/nio/fs/UnixException'> (0x00000000f514c650) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/prims/jni.cpp, line 714]
+Event: 19.130 Thread 0x00007fe6819ef800 Exception <a 'sun/nio/fs/UnixException'> (0x00000000f514cdf0) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/prims/jni.cpp, line 714]
+Event: 19.130 Thread 0x00007fe6819ef800 Exception <a 'sun/nio/fs/UnixException'> (0x00000000f514d630) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/prims/jni.cpp, line 714]
+Event: 19.130 Thread 0x00007fe6819ef800 Exception <a 'sun/nio/fs/UnixException'> (0x00000000f514de60) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/prims/jni.cpp, line 714]
+Event: 19.143 Thread 0x00007fe6819ef800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000f8800078) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/runtime/sharedRuntime.cpp, line 612]
+Event: 19.149 Thread 0x00007fe6819ef800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000f8800ea0) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/runtime/sharedRuntime.cpp, line 612]
+Event: 19.150 Thread 0x00007fe6819ef800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000f8801b18) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/runtime/sharedRuntime.cpp, line 612]
+Event: 19.153 Thread 0x00007fe681a09000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x00000000f5c71248) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/interpreter/linkResolver.cpp, line 630]
+Event: 19.171 Thread 0x00007fe681a0c800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.compare(Lio/quarkus/arc/processor/BuildExtension;Lio/quarkus/arc/processor/BuildExtension;)I> (0x00000000f82ccb30) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/interpreter/linkResolver.cpp,
+Event: 19.210 Thread 0x00007fe681a0c800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.compare(Lio/quarkus/arc/processor/BuildExtension;Lio/quarkus/arc/processor/BuildExtension;)I> (0x00000000f82dfa20) thrown at [/b/b/e/main/graal-jvmci-8/src/share/vm/interpreter/linkResolver.cpp,
+
+Events (10 events):
+Event: 19.270 loading class io/smallrye/openapi/runtime/scanner/SchemaRegistry done
+Event: 19.274 loading class io/quarkus/arc/processor/ContextConfigurator
+Event: 19.274 loading class io/quarkus/arc/processor/ContextConfigurator done
+Event: 19.274 loading class io/quarkus/arc/processor/ContextConfigurator
+Event: 19.274 loading class io/quarkus/arc/processor/ContextConfigurator done
+Event: 19.274 loading class io/quarkus/arc/processor/BeanDeployment$1
+Event: 19.274 loading class io/quarkus/arc/processor/BeanDeployment$1 done
+Event: 19.275 loading class net/bytebuddy/implementation/bind/annotation/TargetMethodAnnotationDrivenBinder$DelegationProcessor
+Event: 19.275 loading class net/bytebuddy/implementation/bind/annotation/TargetMethodAnnotationDrivenBinder$DelegationProcessor done
+Event: 19.276 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+cca00000-d2300000 rw-p 00000000 00:00 0 
+d2300000-eee00000 ---p 00000000 00:00 0 
+eee00000-fca00000 rw-p 00000000 00:00 0 
+ff800000-100000000 ---p 00000000 00:00 0 
+100000000-100420000 rw-p 00000000 00:00 0 
+100420000-140000000 ---p 00000000 00:00 0 
+556c95ecb000-556c95ecc000 r-xp 00000000 fe:00 528063                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/bin/java
+556c960cb000-556c960cc000 r--p 00000000 fe:00 528063                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/bin/java
+556c960cc000-556c960cd000 rw-p 00001000 fe:00 528063                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/bin/java
+556c9723d000-556c972eb000 rw-p 00000000 00:00 0                          [heap]
+7fe60c000000-7fe60c021000 rw-p 00000000 00:00 0 
+7fe60c021000-7fe610000000 ---p 00000000 00:00 0 
+7fe610700000-7fe610780000 rw-p 00000000 00:00 0 
+7fe610780000-7fe610900000 ---p 00000000 00:00 0 
+7fe610900000-7fe610b00000 rw-p 00000000 00:00 0 
+7fe610b00000-7fe610d00000 rw-p 00000000 00:00 0 
+7fe610d00000-7fe610e00000 rw-p 00000000 00:00 0 
+7fe610ed1000-7fe6110d1000 rw-p 00000000 00:00 0 
+7fe6110d1000-7fe6110d4000 ---p 00000000 00:00 0 
+7fe6110d4000-7fe6111d2000 rw-p 00000000 00:00 0 
+7fe6111d2000-7fe6111d5000 ---p 00000000 00:00 0 
+7fe6111d5000-7fe6112d3000 rw-p 00000000 00:00 0 
+7fe6112d3000-7fe6112d6000 ---p 00000000 00:00 0 
+7fe6112d6000-7fe6113d4000 rw-p 00000000 00:00 0 
+7fe6113d4000-7fe6113d7000 ---p 00000000 00:00 0 
+7fe6113d7000-7fe6114d5000 rw-p 00000000 00:00 0 
+7fe6114d5000-7fe6114d8000 ---p 00000000 00:00 0 
+7fe6114d8000-7fe6115d6000 rw-p 00000000 00:00 0 
+7fe6115d6000-7fe6115d9000 ---p 00000000 00:00 0 
+7fe6115d9000-7fe6116d7000 rw-p 00000000 00:00 0 
+7fe6116d7000-7fe6116da000 ---p 00000000 00:00 0 
+7fe6116da000-7fe6117d8000 rw-p 00000000 00:00 0 
+7fe6117d8000-7fe6117db000 ---p 00000000 00:00 0 
+7fe6117db000-7fe6118d9000 rw-p 00000000 00:00 0 
+7fe6118d9000-7fe6118dc000 ---p 00000000 00:00 0 
+7fe6118dc000-7fe6119da000 rw-p 00000000 00:00 0 
+7fe6119da000-7fe6119dd000 ---p 00000000 00:00 0 
+7fe6119dd000-7fe611adb000 rw-p 00000000 00:00 0 
+7fe611adb000-7fe611ade000 ---p 00000000 00:00 0 
+7fe611ade000-7fe611bdc000 rw-p 00000000 00:00 0 
+7fe611bdc000-7fe611bdf000 ---p 00000000 00:00 0 
+7fe611bdf000-7fe611cdd000 rw-p 00000000 00:00 0 
+7fe611cdd000-7fe611ce0000 ---p 00000000 00:00 0 
+7fe611ce0000-7fe611dde000 rw-p 00000000 00:00 0 
+7fe611dde000-7fe611de1000 ---p 00000000 00:00 0 
+7fe611de1000-7fe611edf000 rw-p 00000000 00:00 0 
+7fe611edf000-7fe611ee2000 ---p 00000000 00:00 0 
+7fe611ee2000-7fe611fe0000 rw-p 00000000 00:00 0 
+7fe611fe0000-7fe611fe3000 ---p 00000000 00:00 0 
+7fe611fe3000-7fe6120e1000 rw-p 00000000 00:00 0 
+7fe6120e1000-7fe6120e4000 ---p 00000000 00:00 0 
+7fe6120e4000-7fe6121e2000 rw-p 00000000 00:00 0 
+7fe6121e2000-7fe6121e5000 ---p 00000000 00:00 0 
+7fe6121e5000-7fe6122e3000 rw-p 00000000 00:00 0 
+7fe6122e3000-7fe6122e6000 ---p 00000000 00:00 0 
+7fe6122e6000-7fe6123e4000 rw-p 00000000 00:00 0 
+7fe6123e4000-7fe6123e7000 ---p 00000000 00:00 0 
+7fe6123e7000-7fe6124e5000 rw-p 00000000 00:00 0 
+7fe6124e5000-7fe6124e8000 ---p 00000000 00:00 0 
+7fe6124e8000-7fe6125e6000 rw-p 00000000 00:00 0 
+7fe6125e6000-7fe6125e9000 ---p 00000000 00:00 0 
+7fe6125e9000-7fe6126e7000 rw-p 00000000 00:00 0 
+7fe6126e7000-7fe6126ea000 ---p 00000000 00:00 0 
+7fe6126ea000-7fe6127e8000 rw-p 00000000 00:00 0 
+7fe6127e8000-7fe6127eb000 ---p 00000000 00:00 0 
+7fe6127eb000-7fe6128e9000 rw-p 00000000 00:00 0 
+7fe6128e9000-7fe6128ec000 ---p 00000000 00:00 0 
+7fe6128ec000-7fe6129ea000 rw-p 00000000 00:00 0 
+7fe6129ea000-7fe6129ed000 ---p 00000000 00:00 0 
+7fe6129ed000-7fe612aeb000 rw-p 00000000 00:00 0 
+7fe612aeb000-7fe612aee000 ---p 00000000 00:00 0 
+7fe612aee000-7fe612bec000 rw-p 00000000 00:00 0 
+7fe612bec000-7fe612bef000 ---p 00000000 00:00 0 
+7fe612bef000-7fe612ced000 rw-p 00000000 00:00 0 
+7fe612ced000-7fe612cf0000 ---p 00000000 00:00 0 
+7fe612cf0000-7fe612dee000 rw-p 00000000 00:00 0 
+7fe612dee000-7fe612df1000 ---p 00000000 00:00 0 
+7fe612df1000-7fe612eef000 rw-p 00000000 00:00 0 
+7fe612eef000-7fe612ef2000 ---p 00000000 00:00 0 
+7fe612ef2000-7fe612ff0000 rw-p 00000000 00:00 0 
+7fe612ff0000-7fe612ff3000 ---p 00000000 00:00 0 
+7fe612ff3000-7fe6130f1000 rw-p 00000000 00:00 0 
+7fe6130f1000-7fe6130f4000 ---p 00000000 00:00 0 
+7fe6130f4000-7fe6131f2000 rw-p 00000000 00:00 0 
+7fe6131f2000-7fe6131f5000 ---p 00000000 00:00 0 
+7fe6131f5000-7fe6132f3000 rw-p 00000000 00:00 0 
+7fe6132f3000-7fe6132f6000 ---p 00000000 00:00 0 
+7fe6132f6000-7fe6133f4000 rw-p 00000000 00:00 0 
+7fe6133f4000-7fe6133f7000 ---p 00000000 00:00 0 
+7fe6133f7000-7fe6134f5000 rw-p 00000000 00:00 0 
+7fe6134f5000-7fe6134f8000 ---p 00000000 00:00 0 
+7fe6134f8000-7fe6135f6000 rw-p 00000000 00:00 0 
+7fe6135f6000-7fe6135f9000 ---p 00000000 00:00 0 
+7fe6135f9000-7fe6136f7000 rw-p 00000000 00:00 0 
+7fe6136f7000-7fe6136fa000 ---p 00000000 00:00 0 
+7fe6136fa000-7fe6137f8000 rw-p 00000000 00:00 0 
+7fe6137f8000-7fe6137fb000 ---p 00000000 00:00 0 
+7fe6137fb000-7fe6138f9000 rw-p 00000000 00:00 0 
+7fe6138f9000-7fe6138fc000 ---p 00000000 00:00 0 
+7fe6138fc000-7fe6139fa000 rw-p 00000000 00:00 0 
+7fe6139fa000-7fe6139fd000 ---p 00000000 00:00 0 
+7fe6139fd000-7fe613afb000 rw-p 00000000 00:00 0 
+7fe613afb000-7fe613afe000 ---p 00000000 00:00 0 
+7fe613afe000-7fe613bfc000 rw-p 00000000 00:00 0 
+7fe613bfc000-7fe613bff000 ---p 00000000 00:00 0 
+7fe613bff000-7fe613cfd000 rw-p 00000000 00:00 0 
+7fe613cfd000-7fe613d00000 ---p 00000000 00:00 0 
+7fe613d00000-7fe613dfe000 rw-p 00000000 00:00 0 
+7fe613dfe000-7fe613e01000 ---p 00000000 00:00 0 
+7fe613e01000-7fe613eff000 rw-p 00000000 00:00 0 
+7fe613eff000-7fe613f02000 ---p 00000000 00:00 0 
+7fe613f02000-7fe614000000 rw-p 00000000 00:00 0 
+7fe614000000-7fe614118000 rw-p 00000000 00:00 0 
+7fe614118000-7fe618000000 ---p 00000000 00:00 0 
+7fe6180e7000-7fe6180ea000 ---p 00000000 00:00 0 
+7fe6180ea000-7fe6181e8000 rw-p 00000000 00:00 0 
+7fe6181e8000-7fe6181eb000 ---p 00000000 00:00 0 
+7fe6181eb000-7fe6182e9000 rw-p 00000000 00:00 0 
+7fe6182e9000-7fe6182ec000 ---p 00000000 00:00 0 
+7fe6182ec000-7fe6183ea000 rw-p 00000000 00:00 0 
+7fe6183ea000-7fe6183ed000 ---p 00000000 00:00 0 
+7fe6183ed000-7fe6184eb000 rw-p 00000000 00:00 0 
+7fe6184eb000-7fe6184ee000 ---p 00000000 00:00 0 
+7fe6184ee000-7fe6185ec000 rw-p 00000000 00:00 0 
+7fe6185ec000-7fe6185ef000 ---p 00000000 00:00 0 
+7fe6185ef000-7fe6186ed000 rw-p 00000000 00:00 0 
+7fe6186ed000-7fe6186f0000 ---p 00000000 00:00 0 
+7fe6186f0000-7fe6187ee000 rw-p 00000000 00:00 0 
+7fe6187ee000-7fe6187f1000 ---p 00000000 00:00 0 
+7fe6187f1000-7fe6188ef000 rw-p 00000000 00:00 0 
+7fe6188ef000-7fe6188f2000 ---p 00000000 00:00 0 
+7fe6188f2000-7fe6189f0000 rw-p 00000000 00:00 0 
+7fe6189f0000-7fe6189f3000 ---p 00000000 00:00 0 
+7fe6189f3000-7fe618af1000 rw-p 00000000 00:00 0 
+7fe618af1000-7fe618af4000 ---p 00000000 00:00 0 
+7fe618af4000-7fe618bf2000 rw-p 00000000 00:00 0 
+7fe618bf2000-7fe618bf5000 ---p 00000000 00:00 0 
+7fe618bf5000-7fe618cf3000 rw-p 00000000 00:00 0 
+7fe618cf3000-7fe618cf6000 ---p 00000000 00:00 0 
+7fe618cf6000-7fe618df4000 rw-p 00000000 00:00 0 
+7fe618df4000-7fe618df7000 ---p 00000000 00:00 0 
+7fe618df7000-7fe618ef5000 rw-p 00000000 00:00 0 
+7fe618ef5000-7fe618ef8000 ---p 00000000 00:00 0 
+7fe618ef8000-7fe618ff6000 rw-p 00000000 00:00 0 
+7fe618ff6000-7fe618ff9000 ---p 00000000 00:00 0 
+7fe618ff9000-7fe6190f7000 rw-p 00000000 00:00 0 
+7fe6190f7000-7fe6190fa000 ---p 00000000 00:00 0 
+7fe6190fa000-7fe6191f8000 rw-p 00000000 00:00 0 
+7fe6191f8000-7fe6191fb000 ---p 00000000 00:00 0 
+7fe6191fb000-7fe6192f9000 rw-p 00000000 00:00 0 
+7fe6192f9000-7fe6192fc000 ---p 00000000 00:00 0 
+7fe6192fc000-7fe6193fa000 rw-p 00000000 00:00 0 
+7fe6193fa000-7fe6193fd000 ---p 00000000 00:00 0 
+7fe6193fd000-7fe6194fb000 rw-p 00000000 00:00 0 
+7fe6194fb000-7fe6194fe000 ---p 00000000 00:00 0 
+7fe6194fe000-7fe6195fc000 rw-p 00000000 00:00 0 
+7fe6195fc000-7fe6195ff000 ---p 00000000 00:00 0 
+7fe6195ff000-7fe6196fd000 rw-p 00000000 00:00 0 
+7fe6196fd000-7fe619700000 ---p 00000000 00:00 0 
+7fe619700000-7fe6197fe000 rw-p 00000000 00:00 0 
+7fe6197fe000-7fe619801000 ---p 00000000 00:00 0 
+7fe619801000-7fe6198ff000 rw-p 00000000 00:00 0 
+7fe6198ff000-7fe619902000 ---p 00000000 00:00 0 
+7fe619902000-7fe619a00000 rw-p 00000000 00:00 0 
+7fe619a00000-7fe619c00000 rw-p 00000000 00:00 0 
+7fe619c00000-7fe619e00000 rw-p 00000000 00:00 0 
+7fe619e00000-7fe61a000000 rw-p 00000000 00:00 0 
+7fe61a000000-7fe61a200000 rw-p 00000000 00:00 0 
+7fe61a200000-7fe61a300000 rw-p 00000000 00:00 0 
+7fe61a400000-7fe61a500000 rw-p 00000000 00:00 0 
+7fe61a600000-7fe61a700000 rw-p 00000000 00:00 0 
+7fe61a800000-7fe61aa00000 rw-p 00000000 00:00 0 
+7fe61aa00000-7fe61ab00000 rw-p 00000000 00:00 0 
+7fe61ac00000-7fe61ad00000 rw-p 00000000 00:00 0 
+7fe61ae00000-7fe61af00000 rw-p 00000000 00:00 0 
+7fe61b000000-7fe61b100000 rw-p 00000000 00:00 0 
+7fe61b200000-7fe61b300000 rw-p 00000000 00:00 0 
+7fe61b400000-7fe61b500000 rw-p 00000000 00:00 0 
+7fe61b600000-7fe61b700000 rw-p 00000000 00:00 0 
+7fe61b800000-7fe61b900000 rw-p 00000000 00:00 0 
+7fe61ba00000-7fe61bb00000 rw-p 00000000 00:00 0 
+7fe61bc00000-7fe61bd00000 rw-p 00000000 00:00 0 
+7fe61be00000-7fe61bf00000 rw-p 00000000 00:00 0 
+7fe61c000000-7fe61c100000 rw-p 00000000 00:00 0 
+7fe61c200000-7fe61c300000 rw-p 00000000 00:00 0 
+7fe61c400000-7fe61c500000 rw-p 00000000 00:00 0 
+7fe61c600000-7fe61c700000 rw-p 00000000 00:00 0 
+7fe61c800000-7fe61c900000 rw-p 00000000 00:00 0 
+7fe61ca00000-7fe61cb00000 rw-p 00000000 00:00 0 
+7fe61cc00000-7fe61cd00000 rw-p 00000000 00:00 0 
+7fe61ce00000-7fe61cf00000 rw-p 00000000 00:00 0 
+7fe61d000000-7fe61d100000 rw-p 00000000 00:00 0 
+7fe61d200000-7fe61d300000 rw-p 00000000 00:00 0 
+7fe61d400000-7fe61d500000 rw-p 00000000 00:00 0 
+7fe61d600000-7fe61d700000 rw-p 00000000 00:00 0 
+7fe61d800000-7fe61d900000 rw-p 00000000 00:00 0 
+7fe61da00000-7fe61db00000 rw-p 00000000 00:00 0 
+7fe61dc00000-7fe61dd00000 rw-p 00000000 00:00 0 
+7fe61de00000-7fe61df00000 rw-p 00000000 00:00 0 
+7fe61e000000-7fe61e100000 rw-p 00000000 00:00 0 
+7fe61e200000-7fe61e300000 rw-p 00000000 00:00 0 
+7fe61e400000-7fe61e500000 rw-p 00000000 00:00 0 
+7fe61e600000-7fe61e800000 rw-p 00000000 00:00 0 
+7fe61e800000-7fe61e900000 rw-p 00000000 00:00 0 
+7fe61ea00000-7fe61eb00000 rw-p 00000000 00:00 0 
+7fe61ec00000-7fe61ed00000 rw-p 00000000 00:00 0 
+7fe61ee00000-7fe61ef00000 rw-p 00000000 00:00 0 
+7fe61f000000-7fe61f100000 rw-p 00000000 00:00 0 
+7fe61f200000-7fe61f300000 rw-p 00000000 00:00 0 
+7fe61f400000-7fe61f500000 rw-p 00000000 00:00 0 
+7fe61f600000-7fe61f700000 rw-p 00000000 00:00 0 
+7fe61f800000-7fe61f900000 rw-p 00000000 00:00 0 
+7fe61fa00000-7fe61fb00000 rw-p 00000000 00:00 0 
+7fe61fc00000-7fe61fd00000 rw-p 00000000 00:00 0 
+7fe61fe00000-7fe61ff00000 rw-p 00000000 00:00 0 
+7fe620000000-7fe620100000 rw-p 00000000 00:00 0 
+7fe620200000-7fe620300000 rw-p 00000000 00:00 0 
+7fe620400000-7fe620500000 rw-p 00000000 00:00 0 
+7fe620600000-7fe620700000 rw-p 00000000 00:00 0 
+7fe620800000-7fe620900000 rw-p 00000000 00:00 0 
+7fe620a00000-7fe620b00000 rw-p 00000000 00:00 0 
+7fe620c00000-7fe620d00000 rw-p 00000000 00:00 0 
+7fe620e00000-7fe620f00000 rw-p 00000000 00:00 0 
+7fe621000000-7fe621100000 rw-p 00000000 00:00 0 
+7fe621200000-7fe621300000 rw-p 00000000 00:00 0 
+7fe621400000-7fe621500000 rw-p 00000000 00:00 0 
+7fe621600000-7fe621700000 rw-p 00000000 00:00 0 
+7fe621800000-7fe621900000 rw-p 00000000 00:00 0 
+7fe621a00000-7fe621b00000 rw-p 00000000 00:00 0 
+7fe621c00000-7fe621d00000 rw-p 00000000 00:00 0 
+7fe621e00000-7fe621f00000 rw-p 00000000 00:00 0 
+7fe622000000-7fe622100000 rw-p 00000000 00:00 0 
+7fe622200000-7fe622300000 rw-p 00000000 00:00 0 
+7fe622400000-7fe622500000 rw-p 00000000 00:00 0 
+7fe622600000-7fe622700000 rw-p 00000000 00:00 0 
+7fe622800000-7fe622900000 rw-p 00000000 00:00 0 
+7fe622a00000-7fe622b00000 rw-p 00000000 00:00 0 
+7fe622c00000-7fe622d00000 rw-p 00000000 00:00 0 
+7fe622e00000-7fe622f00000 rw-p 00000000 00:00 0 
+7fe623000000-7fe623100000 rw-p 00000000 00:00 0 
+7fe623200000-7fe623300000 rw-p 00000000 00:00 0 
+7fe623400000-7fe623500000 rw-p 00000000 00:00 0 
+7fe623600000-7fe623700000 rw-p 00000000 00:00 0 
+7fe623800000-7fe623900000 rw-p 00000000 00:00 0 
+7fe623a00000-7fe623b00000 rw-p 00000000 00:00 0 
+7fe623c00000-7fe623d00000 rw-p 00000000 00:00 0 
+7fe623e00000-7fe623f00000 rw-p 00000000 00:00 0 
+7fe624000000-7fe624100000 rw-p 00000000 00:00 0 
+7fe624200000-7fe624300000 rw-p 00000000 00:00 0 
+7fe624400000-7fe624500000 rw-p 00000000 00:00 0 
+7fe624600000-7fe624700000 rw-p 00000000 00:00 0 
+7fe624800000-7fe624a00000 rw-p 00000000 00:00 0 
+7fe624a00000-7fe624b00000 rw-p 00000000 00:00 0 
+7fe624c00000-7fe624d00000 rw-p 00000000 00:00 0 
+7fe624e00000-7fe624f00000 rw-p 00000000 00:00 0 
+7fe625000000-7fe625100000 rw-p 00000000 00:00 0 
+7fe625200000-7fe625300000 rw-p 00000000 00:00 0 
+7fe625400000-7fe625500000 rw-p 00000000 00:00 0 
+7fe625600000-7fe625700000 rw-p 00000000 00:00 0 
+7fe625800000-7fe625900000 rw-p 00000000 00:00 0 
+7fe625a00000-7fe625b00000 rw-p 00000000 00:00 0 
+7fe625c00000-7fe625d00000 rw-p 00000000 00:00 0 
+7fe625e00000-7fe625f00000 rw-p 00000000 00:00 0 
+7fe626000000-7fe626100000 rw-p 00000000 00:00 0 
+7fe626200000-7fe626300000 rw-p 00000000 00:00 0 
+7fe626400000-7fe626500000 rw-p 00000000 00:00 0 
+7fe626600000-7fe626700000 rw-p 00000000 00:00 0 
+7fe626800000-7fe626900000 rw-p 00000000 00:00 0 
+7fe626a00000-7fe626b00000 rw-p 00000000 00:00 0 
+7fe626c00000-7fe626d00000 rw-p 00000000 00:00 0 
+7fe626e00000-7fe626f00000 rw-p 00000000 00:00 0 
+7fe627000000-7fe627100000 rw-p 00000000 00:00 0 
+7fe627200000-7fe627300000 rw-p 00000000 00:00 0 
+7fe627400000-7fe627500000 rw-p 00000000 00:00 0 
+7fe627600000-7fe627700000 rw-p 00000000 00:00 0 
+7fe627800000-7fe627900000 rw-p 00000000 00:00 0 
+7fe627a00000-7fe627b00000 rw-p 00000000 00:00 0 
+7fe627c00000-7fe627d00000 rw-p 00000000 00:00 0 
+7fe627e00000-7fe627f00000 rw-p 00000000 00:00 0 
+7fe628000000-7fe628100000 rw-p 00000000 00:00 0 
+7fe628200000-7fe628300000 rw-p 00000000 00:00 0 
+7fe628400000-7fe628500000 rw-p 00000000 00:00 0 
+7fe628600000-7fe628700000 rw-p 00000000 00:00 0 
+7fe628800000-7fe628900000 rw-p 00000000 00:00 0 
+7fe628a00000-7fe628b00000 rw-p 00000000 00:00 0 
+7fe628c00000-7fe628d00000 rw-p 00000000 00:00 0 
+7fe628e00000-7fe628f00000 rw-p 00000000 00:00 0 
+7fe629000000-7fe629100000 rw-p 00000000 00:00 0 
+7fe629200000-7fe629300000 rw-p 00000000 00:00 0 
+7fe629400000-7fe629500000 rw-p 00000000 00:00 0 
+7fe629600000-7fe629700000 rw-p 00000000 00:00 0 
+7fe629800000-7fe629900000 rw-p 00000000 00:00 0 
+7fe629a00000-7fe629b00000 rw-p 00000000 00:00 0 
+7fe629c00000-7fe629d00000 rw-p 00000000 00:00 0 
+7fe629e00000-7fe629f00000 rw-p 00000000 00:00 0 
+7fe62a000000-7fe62a100000 rw-p 00000000 00:00 0 
+7fe62a200000-7fe62a300000 rw-p 00000000 00:00 0 
+7fe62a400000-7fe62a500000 rw-p 00000000 00:00 0 
+7fe62a600000-7fe62a700000 rw-p 00000000 00:00 0 
+7fe62a800000-7fe62a900000 rw-p 00000000 00:00 0 
+7fe62aa00000-7fe62ab00000 rw-p 00000000 00:00 0 
+7fe62ac00000-7fe62ad00000 rw-p 00000000 00:00 0 
+7fe62ae00000-7fe62af00000 rw-p 00000000 00:00 0 
+7fe62b000000-7fe62b100000 rw-p 00000000 00:00 0 
+7fe62b200000-7fe62b300000 rw-p 00000000 00:00 0 
+7fe62b400000-7fe62b500000 rw-p 00000000 00:00 0 
+7fe62b600000-7fe62b700000 rw-p 00000000 00:00 0 
+7fe62b800000-7fe62b900000 rw-p 00000000 00:00 0 
+7fe62ba00000-7fe62bb00000 rw-p 00000000 00:00 0 
+7fe62bc00000-7fe62bd00000 rw-p 00000000 00:00 0 
+7fe62be00000-7fe62bf00000 rw-p 00000000 00:00 0 
+7fe62c000000-7fe62c100000 rw-p 00000000 00:00 0 
+7fe62c200000-7fe62c300000 rw-p 00000000 00:00 0 
+7fe62c400000-7fe62c500000 rw-p 00000000 00:00 0 
+7fe62c600000-7fe62c700000 rw-p 00000000 00:00 0 
+7fe62c800000-7fe62c900000 rw-p 00000000 00:00 0 
+7fe62ca00000-7fe62cb00000 rw-p 00000000 00:00 0 
+7fe62cc00000-7fe62cd00000 rw-p 00000000 00:00 0 
+7fe62ce00000-7fe62cf00000 rw-p 00000000 00:00 0 
+7fe62d000000-7fe62d100000 rw-p 00000000 00:00 0 
+7fe62d200000-7fe62d300000 rw-p 00000000 00:00 0 
+7fe62d400000-7fe62d500000 rw-p 00000000 00:00 0 
+7fe62d600000-7fe62d700000 rw-p 00000000 00:00 0 
+7fe62d800000-7fe62d900000 rw-p 00000000 00:00 0 
+7fe62da00000-7fe62db00000 rw-p 00000000 00:00 0 
+7fe62dc00000-7fe62dd00000 rw-p 00000000 00:00 0 
+7fe62de00000-7fe62df00000 rw-p 00000000 00:00 0 
+7fe62e000000-7fe62e100000 rw-p 00000000 00:00 0 
+7fe62e200000-7fe62e300000 rw-p 00000000 00:00 0 
+7fe62e400000-7fe62e500000 rw-p 00000000 00:00 0 
+7fe62e600000-7fe62e700000 rw-p 00000000 00:00 0 
+7fe62e800000-7fe62e900000 rw-p 00000000 00:00 0 
+7fe62ea00000-7fe62ec00000 rw-p 00000000 00:00 0 
+7fe62ec00000-7fe62ed00000 rw-p 00000000 00:00 0 
+7fe62ee00000-7fe62ef00000 rw-p 00000000 00:00 0 
+7fe62f000000-7fe62f100000 rw-p 00000000 00:00 0 
+7fe62f200000-7fe62f300000 rw-p 00000000 00:00 0 
+7fe62f400000-7fe62f500000 rw-p 00000000 00:00 0 
+7fe62f600000-7fe62f700000 rw-p 00000000 00:00 0 
+7fe62f800000-7fe62f900000 rw-p 00000000 00:00 0 
+7fe62fa00000-7fe62fb00000 rw-p 00000000 00:00 0 
+7fe62fc00000-7fe62fd00000 rw-p 00000000 00:00 0 
+7fe62fe00000-7fe62ff00000 rw-p 00000000 00:00 0 
+7fe630000000-7fe630100000 rw-p 00000000 00:00 0 
+7fe630200000-7fe630300000 rw-p 00000000 00:00 0 
+7fe630400000-7fe630500000 rw-p 00000000 00:00 0 
+7fe630600000-7fe630700000 rw-p 00000000 00:00 0 
+7fe630800000-7fe630900000 rw-p 00000000 00:00 0 
+7fe630a00000-7fe630b00000 rw-p 00000000 00:00 0 
+7fe630c00000-7fe630d00000 rw-p 00000000 00:00 0 
+7fe630e00000-7fe630f00000 rw-p 00000000 00:00 0 
+7fe631000000-7fe631100000 rw-p 00000000 00:00 0 
+7fe631200000-7fe631300000 rw-p 00000000 00:00 0 
+7fe631400000-7fe631500000 rw-p 00000000 00:00 0 
+7fe631600000-7fe631700000 rw-p 00000000 00:00 0 
+7fe631800000-7fe631900000 rw-p 00000000 00:00 0 
+7fe631a00000-7fe631b00000 rw-p 00000000 00:00 0 
+7fe631c00000-7fe631d00000 rw-p 00000000 00:00 0 
+7fe631e00000-7fe631f00000 rw-p 00000000 00:00 0 
+7fe632000000-7fe632100000 rw-p 00000000 00:00 0 
+7fe632200000-7fe632300000 rw-p 00000000 00:00 0 
+7fe632400000-7fe632500000 rw-p 00000000 00:00 0 
+7fe632600000-7fe632700000 rw-p 00000000 00:00 0 
+7fe632800000-7fe632900000 rw-p 00000000 00:00 0 
+7fe632a00000-7fe632b00000 rw-p 00000000 00:00 0 
+7fe632c00000-7fe632d00000 rw-p 00000000 00:00 0 
+7fe632e00000-7fe632f00000 rw-p 00000000 00:00 0 
+7fe633000000-7fe633100000 rw-p 00000000 00:00 0 
+7fe633200000-7fe633300000 rw-p 00000000 00:00 0 
+7fe633400000-7fe633500000 rw-p 00000000 00:00 0 
+7fe633600000-7fe633700000 rw-p 00000000 00:00 0 
+7fe633800000-7fe633900000 rw-p 00000000 00:00 0 
+7fe633a00000-7fe633b00000 rw-p 00000000 00:00 0 
+7fe633c00000-7fe633d00000 rw-p 00000000 00:00 0 
+7fe633e00000-7fe633f00000 rw-p 00000000 00:00 0 
+7fe634000000-7fe634026000 rw-p 00000000 00:00 0 
+7fe634026000-7fe638000000 ---p 00000000 00:00 0 
+7fe638100000-7fe638200000 rw-p 00000000 00:00 0 
+7fe638300000-7fe638400000 rw-p 00000000 00:00 0 
+7fe638500000-7fe638600000 rw-p 00000000 00:00 0 
+7fe638700000-7fe638800000 rw-p 00000000 00:00 0 
+7fe638900000-7fe638a00000 rw-p 00000000 00:00 0 
+7fe638b00000-7fe638c00000 rw-p 00000000 00:00 0 
+7fe638d00000-7fe638e00000 rw-p 00000000 00:00 0 
+7fe638f00000-7fe639000000 rw-p 00000000 00:00 0 
+7fe639100000-7fe639200000 rw-p 00000000 00:00 0 
+7fe639300000-7fe639400000 rw-p 00000000 00:00 0 
+7fe639500000-7fe639600000 rw-p 00000000 00:00 0 
+7fe639700000-7fe639800000 rw-p 00000000 00:00 0 
+7fe639900000-7fe639a00000 rw-p 00000000 00:00 0 
+7fe639b00000-7fe639c00000 rw-p 00000000 00:00 0 
+7fe639d00000-7fe639e00000 rw-p 00000000 00:00 0 
+7fe639f00000-7fe63a000000 rw-p 00000000 00:00 0 
+7fe63a100000-7fe63a200000 rw-p 00000000 00:00 0 
+7fe63a300000-7fe63a400000 rw-p 00000000 00:00 0 
+7fe63a500000-7fe63a600000 rw-p 00000000 00:00 0 
+7fe63a700000-7fe63a800000 rw-p 00000000 00:00 0 
+7fe63a900000-7fe63aa00000 rw-p 00000000 00:00 0 
+7fe63ab00000-7fe63ac00000 rw-p 00000000 00:00 0 
+7fe63ad00000-7fe63ae00000 rw-p 00000000 00:00 0 
+7fe63af00000-7fe63b000000 rw-p 00000000 00:00 0 
+7fe63b100000-7fe63b200000 rw-p 00000000 00:00 0 
+7fe63b300000-7fe63b400000 rw-p 00000000 00:00 0 
+7fe63b500000-7fe63b600000 rw-p 00000000 00:00 0 
+7fe63b700000-7fe63b800000 rw-p 00000000 00:00 0 
+7fe63b8ff000-7fe63b902000 ---p 00000000 00:00 0 
+7fe63b902000-7fe63bb00000 rw-p 00000000 00:00 0 
+7fe63bc00000-7fe63bd00000 rw-p 00000000 00:00 0 
+7fe63be00000-7fe63bf00000 rw-p 00000000 00:00 0 
+7fe63c000000-7fe63c063000 rw-p 00000000 00:00 0 
+7fe63c063000-7fe640000000 ---p 00000000 00:00 0 
+7fe640000000-7fe640021000 rw-p 00000000 00:00 0 
+7fe640021000-7fe644000000 ---p 00000000 00:00 0 
+7fe644000000-7fe644100000 rw-p 00000000 00:00 0 
+7fe644200000-7fe644300000 rw-p 00000000 00:00 0 
+7fe644400000-7fe644500000 rw-p 00000000 00:00 0 
+7fe644600000-7fe644700000 rw-p 00000000 00:00 0 
+7fe644800000-7fe644900000 rw-p 00000000 00:00 0 
+7fe644a00000-7fe644b00000 rw-p 00000000 00:00 0 
+7fe644c00000-7fe644d00000 rw-p 00000000 00:00 0 
+7fe644e00000-7fe644f00000 rw-p 00000000 00:00 0 
+7fe644fea000-7fe645100000 r--s 00a90000 fe:04 1316781                    /home/blwdev/.m2/repository/org/testcontainers/testcontainers/1.12.2/testcontainers-1.12.2.jar
+7fe645100000-7fe645200000 rw-p 00000000 00:00 0 
+7fe645300000-7fe645400000 rw-p 00000000 00:00 0 
+7fe645500000-7fe645600000 rw-p 00000000 00:00 0 
+7fe645700000-7fe645800000 rw-p 00000000 00:00 0 
+7fe645900000-7fe645a00000 rw-p 00000000 00:00 0 
+7fe645b00000-7fe645c00000 rw-p 00000000 00:00 0 
+7fe645d00000-7fe645e00000 rw-p 00000000 00:00 0 
+7fe645f00000-7fe646000000 rw-p 00000000 00:00 0 
+7fe646100000-7fe646200000 rw-p 00000000 00:00 0 
+7fe646300000-7fe646400000 rw-p 00000000 00:00 0 
+7fe64649e000-7fe647c39000 r-xp 00000000 fe:00 916330                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjvmcicompiler.so
+7fe647c39000-7fe647dfc000 rw-p 0179b000 fe:00 916330                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjvmcicompiler.so
+7fe647dfc000-7fe647dfe000 r-xp 0195e000 fe:00 916330                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjvmcicompiler.so
+7fe647dfe000-7fe647ffd000 ---p 01960000 fe:00 916330                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjvmcicompiler.so
+7fe647ffd000-7fe648000000 rw-p 0195f000 fe:00 916330                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjvmcicompiler.so
+7fe648000000-7fe64866b000 rw-p 00000000 00:00 0 
+7fe64866b000-7fe64c000000 ---p 00000000 00:00 0 
+7fe64c000000-7fe64c055000 rw-p 00000000 00:00 0 
+7fe64c055000-7fe650000000 ---p 00000000 00:00 0 
+7fe650000000-7fe650038000 rw-p 00000000 00:00 0 
+7fe650038000-7fe654000000 ---p 00000000 00:00 0 
+7fe654000000-7fe6541d9000 rw-p 00000000 00:00 0 
+7fe6541d9000-7fe658000000 ---p 00000000 00:00 0 
+7fe658000000-7fe65802e000 rw-p 00000000 00:00 0 
+7fe65802e000-7fe65c000000 ---p 00000000 00:00 0 
+7fe65c000000-7fe65c090000 rw-p 00000000 00:00 0 
+7fe65c090000-7fe660000000 ---p 00000000 00:00 0 
+7fe660000000-7fe660109000 rw-p 00000000 00:00 0 
+7fe660109000-7fe664000000 ---p 00000000 00:00 0 
+7fe664000000-7fe664486000 rw-p 00000000 00:00 0 
+7fe664486000-7fe668000000 ---p 00000000 00:00 0 
+7fe668000000-7fe6681b6000 rw-p 00000000 00:00 0 
+7fe6681b6000-7fe66c000000 ---p 00000000 00:00 0 
+7fe66c000000-7fe66c100000 rw-p 00000000 00:00 0 
+7fe66c200000-7fe66c300000 rw-p 00000000 00:00 0 
+7fe66c313000-7fe66c326000 r--s 00346000 fe:00 782432                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/resources.jar
+7fe66c326000-7fe66c350000 rw-p 00000000 00:00 0 
+7fe66c350000-7fe66c352000 r--s 00004000 fe:04 918956                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-openapi-deployment/1.7.0.Final/quarkus-smallrye-openapi-deployment-1.7.0.Final.jar
+7fe66c352000-7fe66c354000 r--s 00007000 fe:04 918955                     /home/blwdev/.m2/repository/io/smallrye/smallrye-open-api-vertx/2.0.6/smallrye-open-api-vertx-2.0.6.jar
+7fe66c354000-7fe66c356000 r--s 00007000 fe:04 918951                     /home/blwdev/.m2/repository/io/smallrye/smallrye-open-api-spring/2.0.6/smallrye-open-api-spring-2.0.6.jar
+7fe66c356000-7fe66c357000 r--s 00009000 fe:04 918949                     /home/blwdev/.m2/repository/io/smallrye/smallrye-open-api-jaxrs/2.0.6/smallrye-open-api-jaxrs-2.0.6.jar
+7fe66c357000-7fe66c359000 r--s 00002000 fe:04 918947                     /home/blwdev/.m2/repository/io/quarkus/quarkus-swagger-ui-deployment/1.7.0.Final/quarkus-swagger-ui-deployment-1.7.0.Final.jar
+7fe66c359000-7fe66c35b000 r--s 00325000 fe:04 1319611                    /home/blwdev/.m2/repository/org/webjars/swagger-ui/3.30.0/swagger-ui-3.30.0.jar
+7fe66c35b000-7fe66c35d000 r--s 00000000 fe:04 918945                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-openapi-common-deployment/1.7.0.Final/quarkus-smallrye-openapi-common-deployment-1.7.0.Final.jar
+7fe66c35d000-7fe66c35e000 r--s 00001000 fe:04 918752                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jdbc-postgresql-deployment/1.7.0.Final/quarkus-jdbc-postgresql-deployment-1.7.0.Final.jar
+7fe66c35e000-7fe66c360000 r--s 00000000 fe:04 918750                     /home/blwdev/.m2/repository/io/quarkus/quarkus-agroal-spi/1.7.0.Final/quarkus-agroal-spi-1.7.0.Final.jar
+7fe66c360000-7fe66c361000 r--s 00003000 fe:04 918748                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm-panache-deployment/1.7.0.Final/quarkus-hibernate-orm-panache-deployment-1.7.0.Final.jar
+7fe66c361000-7fe66c363000 r--s 00006000 fe:04 918746                     /home/blwdev/.m2/repository/io/quarkus/quarkus-panache-common-deployment/1.7.0.Final/quarkus-panache-common-deployment-1.7.0.Final.jar
+7fe66c363000-7fe66c364000 r--s 00001000 fe:04 918744                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm-panache-common-deployment/1.7.0.Final/quarkus-hibernate-orm-panache-common-deployment-1.7.0.Final.jar
+7fe66c364000-7fe66c367000 r--s 0000d000 fe:04 918743                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm-deployment/1.7.0.Final/quarkus-hibernate-orm-deployment-1.7.0.Final.jar
+7fe66c367000-7fe66c368000 r--s 00000000 fe:04 918742                     /home/blwdev/.m2/repository/io/quarkus/quarkus-caffeine-deployment/1.7.0.Final/quarkus-caffeine-deployment-1.7.0.Final.jar
+7fe66c368000-7fe66c369000 r--s 00003000 fe:04 918738                     /home/blwdev/.m2/repository/io/quarkus/quarkus-agroal-deployment/1.7.0.Final/quarkus-agroal-deployment-1.7.0.Final.jar
+7fe66c369000-7fe66c36a000 r--s 00000000 fe:04 918736                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-health-spi/1.7.0.Final/quarkus-smallrye-health-spi-1.7.0.Final.jar
+7fe66c36a000-7fe66c36b000 r--s 00000000 fe:04 918735                     /home/blwdev/.m2/repository/io/quarkus/quarkus-credentials-deployment/1.7.0.Final/quarkus-credentials-deployment-1.7.0.Final.jar
+7fe66c36b000-7fe66c36c000 r--s 00000000 fe:04 918734                     /home/blwdev/.m2/repository/io/quarkus/quarkus-datasource-deployment/1.7.0.Final/quarkus-datasource-deployment-1.7.0.Final.jar
+7fe66c36c000-7fe66c36d000 r--s 00001000 fe:04 918730                     /home/blwdev/.m2/repository/io/quarkus/quarkus-narayana-jta-deployment/1.7.0.Final/quarkus-narayana-jta-deployment-1.7.0.Final.jar
+7fe66c36d000-7fe66c36e000 r--s 00000000 fe:04 918727                     /home/blwdev/.m2/repository/io/quarkus/quarkus-mutiny-deployment/1.7.0.Final/quarkus-mutiny-deployment-1.7.0.Final.jar
+7fe66c36e000-7fe66c36f000 r--s 00001000 fe:04 918725                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-context-propagation-deployment/1.7.0.Final/quarkus-smallrye-context-propagation-deployment-1.7.0.Final.jar
+7fe66c36f000-7fe66c371000 r--s 00000000 fe:04 918723                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-jsonb-deployment/1.7.0.Final/quarkus-resteasy-jsonb-deployment-1.7.0.Final.jar
+7fe66c371000-7fe66c373000 r--s 00001000 fe:04 918721                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jsonb-deployment/1.7.0.Final/quarkus-jsonb-deployment-1.7.0.Final.jar
+7fe66c373000-7fe66c374000 r--s 00000000 fe:04 918719                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jsonb-spi/1.7.0.Final/quarkus-jsonb-spi-1.7.0.Final.jar
+7fe66c374000-7fe66c376000 r--s 00003000 fe:04 918717                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-validator-deployment/1.7.0.Final/quarkus-hibernate-validator-deployment-1.7.0.Final.jar
+7fe66c376000-7fe66c377000 r--s 00001000 fe:04 926695                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-server-common-spi/1.7.0.Final/quarkus-resteasy-server-common-spi-1.7.0.Final.jar
+7fe66c377000-7fe66c379000 r--s 00003000 fe:04 926716                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-deployment/1.7.0.Final/quarkus-resteasy-deployment-1.7.0.Final.jar
+7fe66c379000-7fe66c37a000 r--s 00000000 fe:04 926713                     /home/blwdev/.m2/repository/io/quarkus/quarkus-security-spi/1.7.0.Final/quarkus-security-spi-1.7.0.Final.jar
+7fe66c37a000-7fe66c37e000 r--s 00025000 fe:04 926711                     /home/blwdev/.m2/repository/io/quarkus/quarkus-arc-deployment/1.7.0.Final/quarkus-arc-deployment-1.7.0.Final.jar
+7fe66c37e000-7fe66c382000 r--s 0004a000 fe:04 926710                     /home/blwdev/.m2/repository/io/quarkus/arc/arc-processor/1.7.0.Final/arc-processor-1.7.0.Final.jar
+7fe66c382000-7fe66c384000 r--s 00008000 fe:04 926709                     /home/blwdev/.m2/repository/io/quarkus/quarkus-vertx-http-deployment/1.7.0.Final/quarkus-vertx-http-deployment-1.7.0.Final.jar
+7fe66c384000-7fe66c386000 r--s 00003000 fe:04 926708                     /home/blwdev/.m2/repository/io/quarkus/quarkus-kubernetes-spi/1.7.0.Final/quarkus-kubernetes-spi-1.7.0.Final.jar
+7fe66c386000-7fe66c388000 r--s 00001000 fe:04 926703                     /home/blwdev/.m2/repository/io/quarkus/quarkus-vertx-core-deployment/1.7.0.Final/quarkus-vertx-core-deployment-1.7.0.Final.jar
+7fe66c388000-7fe66c389000 r--s 00002000 fe:04 926702                     /home/blwdev/.m2/repository/io/quarkus/quarkus-netty-deployment/1.7.0.Final/quarkus-netty-deployment-1.7.0.Final.jar
+7fe66c389000-7fe66c38b000 r--s 00005000 fe:04 926700                     /home/blwdev/.m2/repository/io/quarkus/quarkus-undertow-spi/1.7.0.Final/quarkus-undertow-spi-1.7.0.Final.jar
+7fe66c38b000-7fe66c392000 r--s 0006c000 fe:04 1277398                    /home/blwdev/.m2/repository/org/jboss/metadata/jboss-metadata-web/11.0.0.Final/jboss-metadata-web-11.0.0.Final.jar
+7fe66c392000-7fe66c39c000 r--s 0006a000 fe:04 1277396                    /home/blwdev/.m2/repository/org/jboss/metadata/jboss-metadata-common/11.0.0.Final/jboss-metadata-common-11.0.0.Final.jar
+7fe66c39c000-7fe66c3a0000 r--s 00011000 fe:04 1270222                    /home/blwdev/.m2/repository/jakarta/servlet/jakarta.servlet-api/4.0.3/jakarta.servlet-api-4.0.3.jar
+7fe66c3a0000-7fe66c3a9000 r--s 00071000 fe:04 917819                     /home/blwdev/.m2/repository/io/quarkus/http/quarkus-http-servlet/3.0.14.Final/quarkus-http-servlet-3.0.14.Final.jar
+7fe66c3a9000-7fe66c3bc000 r--s 000d1000 fe:04 917818                     /home/blwdev/.m2/repository/io/quarkus/http/quarkus-http-core/3.0.14.Final/quarkus-http-core-3.0.14.Final.jar
+7fe66c3bc000-7fe66c3be000 r--s 00008000 fe:04 917820                     /home/blwdev/.m2/repository/io/quarkus/http/quarkus-http-http-core/3.0.14.Final/quarkus-http-http-core-3.0.14.Final.jar
+7fe66c3be000-7fe66c3c0000 r--s 00006000 fe:04 926697                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-server-common-deployment/1.7.0.Final/quarkus-resteasy-server-common-deployment-1.7.0.Final.jar
+7fe66c3c0000-7fe66c3c1000 r--s 00005000 fe:04 926693                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-common-deployment/1.7.0.Final/quarkus-resteasy-common-deployment-1.7.0.Final.jar
+7fe66c3c1000-7fe66c3c2000 r--s 00000000 fe:04 918265                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-common-spi/1.7.0.Final/quarkus-resteasy-common-spi-1.7.0.Final.jar
+7fe66c3c2000-7fe66c3c3000 r--s 00010000 fe:00 1437474                    /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/ext/zipfs.jar
+7fe66c3c3000-7fe66c3c8000 r--s 000a7000 fe:00 782431                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jsse.jar
+7fe66c3c8000-7fe66c3cb000 r--s 0001b000 fe:04 788534                     /home/blwdev/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.2/junit-platform-launcher-1.6.2.jar
+7fe66c3cb000-7fe66c3cc000 r--s 00003000 fe:04 1277548                    /home/blwdev/.m2/repository/org/apache/maven/surefire/common-java5/3.0.0-M5/common-java5-3.0.0-M5.jar
+7fe66c3cc000-7fe66c3cd000 r--s 00005000 fe:04 1277493                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.0.0-M5/surefire-junit-platform-3.0.0-M5.jar
+7fe66c3cd000-7fe66c3e2000 r--s 00146000 fe:04 1270425                    /home/blwdev/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.11.2/jackson-databind-2.11.2.jar
+7fe66c3e2000-7fe66c400000 r--s 00263000 fe:04 524719                     /home/blwdev/.m2/repository/net/java/dev/jna/jna-platform/5.3.1/jna-platform-5.3.1.jar
+7fe66c400000-7fe66c500000 rw-p 00000000 00:00 0 
+7fe66c500000-7fe66c504000 r--s 00052000 fe:04 524895                     /home/blwdev/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.11.2/jackson-core-2.11.2.jar
+7fe66c504000-7fe66c507000 r--s 0000e000 fe:04 1970343                    /home/blwdev/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.11.2/jackson-annotations-2.11.2.jar
+7fe66c507000-7fe66c508000 r--s 00002000 fe:04 1316800                    /home/blwdev/.m2/repository/org/testcontainers/database-commons/1.12.2/database-commons-1.12.2.jar
+7fe66c508000-7fe66c50a000 r--s 00005000 fe:04 1316797                    /home/blwdev/.m2/repository/org/testcontainers/jdbc/1.12.2/jdbc-1.12.2.jar
+7fe66c50a000-7fe66c50b000 r--s 00001000 fe:04 1316796                    /home/blwdev/.m2/repository/org/testcontainers/postgresql/1.12.2/postgresql-1.12.2.jar
+7fe66c50b000-7fe66c50d000 r--s 00016000 fe:04 788486                     /home/blwdev/.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar
+7fe66c50d000-7fe66c50e000 r--s 00001000 fe:04 1249371                    /home/blwdev/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+7fe66c50e000-7fe66c50f000 r--s 00000000 fe:04 1249373                    /home/blwdev/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar
+7fe66c50f000-7fe66c513000 r--s 00022000 fe:04 788485                     /home/blwdev/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar
+7fe66c513000-7fe66c517000 r--s 0016c000 fe:04 524720                     /home/blwdev/.m2/repository/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar
+7fe66c517000-7fe66c519000 r--s 00003000 fe:04 1316792                    /home/blwdev/.m2/repository/com/kohlschutter/junixsocket/junixsocket-common/2.0.4/junixsocket-common-2.0.4.jar
+7fe66c519000-7fe66c51b000 r--s 00003000 fe:04 1316791                    /home/blwdev/.m2/repository/org/scijava/native-lib-loader/2.0.2/native-lib-loader-2.0.2.jar
+7fe66c51b000-7fe66c51c000 r--s 00006000 fe:04 1316787                    /home/blwdev/.m2/repository/com/kohlschutter/junixsocket/junixsocket-native-common/2.0.4/junixsocket-native-common-2.0.4.jar
+7fe66c51c000-7fe66c51d000 r--s 00001000 fe:04 1316786                    /home/blwdev/.m2/repository/org/rnorth/tcp-unix-socket-proxy/1.0.2/tcp-unix-socket-proxy-1.0.2.jar
+7fe66c51d000-7fe66c51e000 r--s 00002000 fe:04 1316785                    /home/blwdev/.m2/repository/org/rnorth/visible-assertions/visible-assertions/2.1.2/visible-assertions-2.1.2.jar
+7fe66c51e000-7fe66c520000 r--s 00005000 fe:04 1316782                    /home/blwdev/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar
+7fe66c520000-7fe66c522000 r--s 0000c000 fe:04 1189835                    /home/blwdev/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar
+7fe66c522000-7fe66c526000 r--s 0001c000 fe:04 1189833                    /home/blwdev/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar
+7fe66c526000-7fe66c532000 r--s 0008f000 fe:04 1270217                    /home/blwdev/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+7fe66c532000-7fe66c534000 r--s 00005000 fe:04 1189891                    /home/blwdev/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar
+7fe66c534000-7fe66c536000 r--s 00003000 fe:04 1316779                    /home/blwdev/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar
+7fe66c536000-7fe66c538000 r--s 00009000 fe:04 1064679                    /home/blwdev/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+7fe66c538000-7fe66c540000 r--s 00045000 fe:04 1190005                    /home/blwdev/.m2/repository/junit/junit/4.12/junit-4.12.jar
+7fe66c540000-7fe66c542000 r--s 0001b000 fe:04 1189839                    /home/blwdev/.m2/repository/org/apache/sling/org.apache.sling.javax.activation/0.1.0/org.apache.sling.javax.activation-0.1.0.jar
+7fe66c542000-7fe66c544000 r--s 00009000 fe:04 1277138                    /home/blwdev/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar
+7fe66c544000-7fe66c548000 r--s 00019000 fe:04 1277137                    /home/blwdev/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar
+7fe66c548000-7fe66c551000 r--s 00073000 fe:04 1270396                    /home/blwdev/.m2/repository/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar
+7fe66c551000-7fe66c553000 r--s 00011000 fe:04 918069                     /home/blwdev/.m2/repository/io/rest-assured/xml-path/4.3.0/xml-path-4.3.0.jar
+7fe66c553000-7fe66c555000 r--s 00009000 fe:04 918066                     /home/blwdev/.m2/repository/io/rest-assured/rest-assured-common/4.3.0/rest-assured-common-4.3.0.jar
+7fe66c555000-7fe66c558000 r--s 0001e000 fe:04 1277135                    /home/blwdev/.m2/repository/org/codehaus/groovy/groovy-json/3.0.2/groovy-json-3.0.2.jar
+7fe66c558000-7fe66c55b000 r--s 0000e000 fe:04 918065                     /home/blwdev/.m2/repository/io/rest-assured/json-path/4.3.0/json-path-4.3.0.jar
+7fe66c55b000-7fe66c55d000 r--s 00015000 fe:04 1189831                    /home/blwdev/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar
+7fe66c55d000-7fe66c561000 r--s 0001b000 fe:04 927549                     /home/blwdev/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar
+7fe66c561000-7fe66c563000 r--s 00009000 fe:04 1277132                    /home/blwdev/.m2/repository/org/apache/httpcomponents/httpmime/4.5.3/httpmime-4.5.3.jar
+7fe66c563000-7fe66c56a000 r--s 0004e000 fe:04 1270132                    /home/blwdev/.m2/repository/commons-codec/commons-codec/1.14/commons-codec-1.14.jar
+7fe66c56a000-7fe66c572000 r--s 00049000 fe:04 1270133                    /home/blwdev/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar
+7fe66c572000-7fe66c57f000 r--s 000b1000 fe:04 1270123                    /home/blwdev/.m2/repository/org/apache/httpcomponents/httpclient/4.5.12/httpclient-4.5.12.jar
+7fe66c57f000-7fe66c5f5000 r--s 00712000 fe:04 1277130                    /home/blwdev/.m2/repository/org/codehaus/groovy/groovy/3.0.2/groovy-3.0.2.jar
+7fe66c5f5000-7fe66c600000 r--s 000a0000 fe:04 918063                     /home/blwdev/.m2/repository/io/rest-assured/rest-assured/4.3.0/rest-assured-4.3.0.jar
+7fe66c600000-7fe66c700000 rw-p 00000000 00:00 0 
+7fe66c700000-7fe66c701000 r--s 00001000 fe:04 1316780                    /home/blwdev/.m2/repository/org/testcontainers/junit-jupiter/1.12.2/junit-jupiter-1.12.2.jar
+7fe66c701000-7fe66c706000 r--s 00041000 fe:04 1277131                    /home/blwdev/.m2/repository/org/codehaus/groovy/groovy-xml/3.0.2/groovy-xml-3.0.2.jar
+7fe66c706000-7fe66c708000 r--s 00005000 fe:04 1277126                    /home/blwdev/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+7fe66c708000-7fe66c709000 r--s 00001000 fe:04 1277125                    /home/blwdev/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar
+7fe66c709000-7fe66c717000 r--s 0008a000 fe:04 1277124                    /home/blwdev/.m2/repository/com/thoughtworks/xstream/xstream/1.4.11.1/xstream-1.4.11.1.jar
+7fe66c717000-7fe66c71c000 r--s 00026000 fe:04 788492                     /home/blwdev/.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar
+7fe66c71c000-7fe66c721000 r--s 0002f000 fe:04 788489                     /home/blwdev/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar
+7fe66c721000-7fe66c72e000 r--s 0007d000 fe:04 788487                     /home/blwdev/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar
+7fe66c72e000-7fe66c72f000 r--s 00001000 fe:04 788484                     /home/blwdev/.m2/repository/org/junit/jupiter/junit-jupiter/5.6.2/junit-jupiter-5.6.2.jar
+7fe66c72f000-7fe66c731000 r--s 00003000 fe:04 1270081                    /home/blwdev/.m2/repository/org/jboss/logging/commons-logging-jboss-logging/1.0.0.Final/commons-logging-jboss-logging-1.0.0.Final.jar
+7fe66c731000-7fe66c732000 r--s 00000000 fe:04 918057                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jsonp-deployment/1.7.0.Final/quarkus-jsonp-deployment-1.7.0.Final.jar
+7fe66c732000-7fe66c734000 r--s 0000b000 fe:04 917798                     /home/blwdev/.m2/repository/io/quarkus/quarkus-builder/1.7.0.Final/quarkus-builder-1.7.0.Final.jar
+7fe66c734000-7fe66c735000 r--s 00001000 fe:04 917780                     /home/blwdev/.m2/repository/io/quarkus/quarkus-devtools-utilities/1.7.0.Final/quarkus-devtools-utilities-1.7.0.Final.jar
+7fe66c735000-7fe66c737000 r--s 00007000 fe:04 1270162                    /home/blwdev/.m2/repository/org/ow2/asm/asm-analysis/8.0.1/asm-analysis-8.0.1.jar
+7fe66c737000-7fe66c739000 r--s 0000b000 fe:04 1270155                    /home/blwdev/.m2/repository/org/ow2/asm/asm-tree/8.0.1/asm-tree-8.0.1.jar
+7fe66c739000-7fe66c73a000 r--s 00014000 fe:04 1270154                    /home/blwdev/.m2/repository/org/ow2/asm/asm-util/8.0.1/asm-util-8.0.1.jar
+7fe66c73a000-7fe66c73c000 r--s 00016000 fe:04 917776                     /home/blwdev/.m2/repository/io/quarkus/gizmo/gizmo/1.0.4.Final/gizmo-1.0.4.Final.jar
+7fe66c73c000-7fe66c74a000 r--s 000a0000 fe:04 917774                     /home/blwdev/.m2/repository/io/quarkus/quarkus-core-deployment/1.7.0.Final/quarkus-core-deployment-1.7.0.Final.jar
+7fe66c74a000-7fe66c74c000 r--s 0000a000 fe:04 918056                     /home/blwdev/.m2/repository/io/quarkus/quarkus-test-common/1.7.0.Final/quarkus-test-common-1.7.0.Final.jar
+7fe66c74c000-7fe66c753000 r--s 00056000 fe:04 1270163                    /home/blwdev/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.4/org.eclipse.sisu.inject-0.3.4.jar
+7fe66c753000-7fe66c754000 r--s 00001000 fe:04 917772                     /home/blwdev/.m2/repository/io/smallrye/common/smallrye-common-io/1.1.0/smallrye-common-io-1.1.0.jar
+7fe66c754000-7fe66c787000 r--s 001c4000 fe:04 917770                     /home/blwdev/.m2/repository/io/quarkus/quarkus-bootstrap-gradle-resolver/1.7.0.Final/quarkus-bootstrap-gradle-resolver-1.7.0.Final.jar
+7fe66c787000-7fe66c788000 r--s 00002000 fe:04 1270139                    /home/blwdev/.m2/repository/org/apache/maven/wagon/wagon-file/3.3.4/wagon-file-3.3.4.jar
+7fe66c788000-7fe66c78a000 r--s 0000c000 fe:04 1277120                    /home/blwdev/.m2/repository/org/apache/maven/wagon/wagon-provider-api/3.3.4/wagon-provider-api-3.3.4.jar
+7fe66c78a000-7fe66c790000 r--s 0005b000 fe:04 1277119                    /home/blwdev/.m2/repository/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar
+7fe66c790000-7fe66c792000 r--s 00009000 fe:04 1270112                    /home/blwdev/.m2/repository/org/apache/maven/wagon/wagon-http-shared/3.3.4/wagon-http-shared-3.3.4.jar
+7fe66c792000-7fe66c793000 r--s 00002000 fe:04 1270110                    /home/blwdev/.m2/repository/org/apache/maven/wagon/wagon-http/3.3.4/wagon-http-3.3.4.jar
+7fe66c793000-7fe66c795000 r--s 00006000 fe:04 1270096                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-transport-wagon/1.4.1/maven-resolver-transport-wagon-1.4.1.jar
+7fe66c795000-7fe66c797000 r--s 00009000 fe:04 1270091                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-connector-basic/1.4.1/maven-resolver-connector-basic-1.4.1.jar
+7fe66c797000-7fe66c79b000 r--s 00029000 fe:04 1270335                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.4.1/maven-resolver-impl-1.4.1.jar
+7fe66c79b000-7fe66c79d000 r--s 00007000 fe:04 1270343                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.4.1/maven-resolver-spi-1.4.1.jar
+7fe66c79d000-7fe66c79e000 r--s 00006000 fe:04 1270321                    /home/blwdev/.m2/repository/org/apache/maven/maven-repository-metadata/3.6.3/maven-repository-metadata-3.6.3.jar
+7fe66c79e000-7fe66c7a0000 r--s 0000f000 fe:04 1270328                    /home/blwdev/.m2/repository/org/apache/maven/maven-resolver-provider/3.6.3/maven-resolver-provider-3.6.3.jar
+7fe66c7a0000-7fe66c7a2000 r--s 00002000 fe:04 1188987                    /home/blwdev/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar
+7fe66c7a2000-7fe66c7a3000 r--s 00006000 fe:04 1270313                    /home/blwdev/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar
+7fe66c7a3000-7fe66c7a6000 r--s 00012000 fe:04 1270306                    /home/blwdev/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.25/plexus-interpolation-1.25.jar
+7fe66c7a6000-7fe66c7a8000 r--s 00009000 fe:04 1270304                    /home/blwdev/.m2/repository/org/apache/maven/maven-settings-builder/3.6.3/maven-settings-builder-3.6.3.jar
+7fe66c7a8000-7fe66c7ae000 r--s 0002d000 fe:04 1270267                    /home/blwdev/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.4/org.eclipse.sisu.plexus-0.3.4.jar
+7fe66c7ae000-7fe66c7b0000 r--s 0000c000 fe:04 1270087                    /home/blwdev/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar
+7fe66c7b0000-7fe66c7b2000 r--s 0000b000 fe:04 1277117                    /home/blwdev/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar
+7fe66c7b2000-7fe66c7b5000 r--s 0003d000 fe:04 1270273                    /home/blwdev/.m2/repository/org/codehaus/plexus/plexus-utils/3.2.1/plexus-utils-3.2.1.jar
+7fe66c7b5000-7fe66c7b7000 r--s 00000000 fe:04 1270372                    /home/blwdev/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar
+7fe66c7b7000-7fe66c7e9000 r--s 0026d000 fe:04 1270363                    /home/blwdev/.m2/repository/com/google/guava/guava/27.0.1-jre/guava-27.0.1-jre.jar
+7fe66c7e9000-7fe66c7f4000 r--s 00075000 fe:04 1270362                    /home/blwdev/.m2/repository/com/google/inject/guice/4.2.1/guice-4.2.1-no_aop.jar
+7fe66c7f4000-7fe66c7f7000 r--s 00026000 fe:04 1188989                    /home/blwdev/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.2.1/maven-shared-utils-3.2.1.jar
+7fe66c7f7000-7fe66c7fb000 r--s 00025000 fe:04 1270345                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar
+7fe66c7fb000-7fe66c800000 r--s 00020000 fe:04 1270336                    /home/blwdev/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar
+7fe66c800000-7fe66c900000 rw-p 00000000 00:00 0 
+7fe66c900000-7fe66c901000 r--s 00000000 fe:04 1270373                    /home/blwdev/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+7fe66c901000-7fe66c902000 r--s 00003000 fe:04 1270316                    /home/blwdev/.m2/repository/org/apache/maven/maven-builder-support/3.6.3/maven-builder-support-3.6.3.jar
+7fe66c902000-7fe66c907000 r--s 0002a000 fe:04 1270327                    /home/blwdev/.m2/repository/org/apache/maven/maven-model-builder/3.6.3/maven-model-builder-3.6.3.jar
+7fe66c907000-7fe66c90a000 r--s 00032000 fe:04 1270254                    /home/blwdev/.m2/repository/org/apache/maven/maven-model/3.6.3/maven-model-3.6.3.jar
+7fe66c90a000-7fe66c90c000 r--s 0000a000 fe:04 1270245                    /home/blwdev/.m2/repository/org/apache/maven/maven-plugin-api/3.6.3/maven-plugin-api-3.6.3.jar
+7fe66c90c000-7fe66c90e000 r--s 00000000 fe:04 1270393                    /home/blwdev/.m2/repository/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0.jar
+7fe66c90e000-7fe66c911000 r--s 0000c000 fe:04 1270256                    /home/blwdev/.m2/repository/org/apache/maven/maven-artifact/3.6.3/maven-artifact-3.6.3.jar
+7fe66c911000-7fe66c91e000 r--s 0008e000 fe:04 1270298                    /home/blwdev/.m2/repository/org/apache/maven/maven-core/3.6.3/maven-core-3.6.3.jar
+7fe66c91e000-7fe66c91f000 r--s 0000a000 fe:04 1270303                    /home/blwdev/.m2/repository/org/apache/maven/maven-settings/3.6.3/maven-settings-3.6.3.jar
+7fe66c91f000-7fe66c921000 r--s 00016000 fe:04 1270085                    /home/blwdev/.m2/repository/org/apache/maven/maven-embedder/3.6.3/maven-embedder-3.6.3.jar
+7fe66c921000-7fe66c923000 r--s 0001c000 fe:04 1270173                    /home/blwdev/.m2/repository/org/ow2/asm/asm/8.0.1/asm-8.0.1.jar
+7fe66c923000-7fe66c925000 r--s 00017000 fe:04 917768                     /home/blwdev/.m2/repository/io/quarkus/quarkus-bootstrap-maven-resolver/1.7.0.Final/quarkus-bootstrap-maven-resolver-1.7.0.Final.jar
+7fe66c925000-7fe66c927000 r--s 00007000 fe:04 917766                     /home/blwdev/.m2/repository/io/quarkus/quarkus-bootstrap-app-model/1.7.0.Final/quarkus-bootstrap-app-model-1.7.0.Final.jar
+7fe66c927000-7fe66c92a000 r--s 00013000 fe:04 917764                     /home/blwdev/.m2/repository/io/quarkus/quarkus-bootstrap-core/1.7.0.Final/quarkus-bootstrap-core-1.7.0.Final.jar
+7fe66c92a000-7fe66c92c000 r--s 0000a000 fe:04 918054                     /home/blwdev/.m2/repository/io/quarkus/quarkus-junit5/1.7.0.Final/quarkus-junit5-1.7.0.Final.jar
+7fe66c92c000-7fe66c92d000 r--s 00001000 fe:04 918906                     /home/blwdev/.m2/repository/io/quarkus/quarkus-swagger-ui/1.7.0.Final/quarkus-swagger-ui-1.7.0.Final.jar
+7fe66c92d000-7fe66c931000 r--s 0002e000 fe:04 1270171                    /home/blwdev/.m2/repository/org/jboss/jandex/2.2.1.Final/jandex-2.2.1.Final.jar
+7fe66c931000-7fe66c938000 r--s 00045000 fe:04 1270240                    /home/blwdev/.m2/repository/org/yaml/snakeyaml/1.26/snakeyaml-1.26.jar
+7fe66c938000-7fe66c93a000 r--s 0000a000 fe:04 1270223                    /home/blwdev/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.11.2/jackson-dataformat-yaml-2.11.2.jar
+7fe66c93a000-7fe66c93c000 r--s 00002000 fe:04 1270180                    /home/blwdev/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/1.4/microprofile-config-api-1.4.jar
+7fe66c93c000-7fe66c941000 r--s 00014000 fe:04 1319602                    /home/blwdev/.m2/repository/org/eclipse/microprofile/openapi/microprofile-openapi-api/1.1.2/microprofile-openapi-api-1.1.2.jar
+7fe66c941000-7fe66c949000 r--s 0005a000 fe:04 918908                     /home/blwdev/.m2/repository/io/smallrye/smallrye-open-api-core/2.0.6/smallrye-open-api-core-2.0.6.jar
+7fe66c949000-7fe66c94a000 r--s 00002000 fe:04 918901                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-openapi/1.7.0.Final/quarkus-smallrye-openapi-1.7.0.Final.jar
+7fe66c94a000-7fe66c956000 r--s 000d8000 fe:04 1313213                    /home/blwdev/.m2/repository/org/postgresql/postgresql/42.2.14/postgresql-42.2.14.jar
+7fe66c956000-7fe66c957000 r--s 00001000 fe:04 918543                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jdbc-postgresql/1.7.0.Final/quarkus-jdbc-postgresql-1.7.0.Final.jar
+7fe66c957000-7fe66c958000 r--s 00002000 fe:04 918542                     /home/blwdev/.m2/repository/io/quarkus/quarkus-panache-common/1.7.0.Final/quarkus-panache-common-1.7.0.Final.jar
+7fe66c958000-7fe66c95a000 r--s 00000000 fe:04 918538                     /home/blwdev/.m2/repository/io/quarkus/quarkus-caffeine/1.7.0.Final/quarkus-caffeine-1.7.0.Final.jar
+7fe66c95a000-7fe66c95c000 r--s 00002000 fe:04 1270383                    /home/blwdev/.m2/repository/com/google/errorprone/error_prone_annotations/2.2.0/error_prone_annotations-2.2.0.jar
+7fe66c95c000-7fe66c96e000 r--s 000c6000 fe:04 1313210                    /home/blwdev/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.8.5/caffeine-2.8.5.jar
+7fe66c96e000-7fe66c970000 r--s 0000f000 fe:04 1313209                    /home/blwdev/.m2/repository/org/hibernate/quarkus-local-cache/0.1.0/quarkus-local-cache-0.1.0.jar
+7fe66c970000-7fe66c976000 r--s 00023000 fe:04 1313202                    /home/blwdev/.m2/repository/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar
+7fe66c976000-7fe66c97a000 r--s 00018000 fe:04 1277106                    /home/blwdev/.m2/repository/org/jboss/spec/javax/xml/bind/jboss-jaxb-api_2.3_spec/2.0.0.Final/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar
+7fe66c97a000-7fe66ca00000 r--s 00673000 fe:04 1313186                    /home/blwdev/.m2/repository/org/hibernate/hibernate-core/5.4.19.Final/hibernate-core-5.4.19.Final.jar
+7fe66ca00000-7fe66cb00000 rw-p 00000000 00:00 0 
+7fe66cb00000-7fe66cb01000 r--s 00005000 fe:04 918539                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm-panache-common/1.7.0.Final/quarkus-hibernate-orm-panache-common-1.7.0.Final.jar
+7fe66cb01000-7fe66cb02000 r--s 00003000 fe:04 1277100                    /home/blwdev/.m2/repository/jakarta/transaction/jakarta.transaction-api/1.3.3/jakarta.transaction-api-1.3.3.jar
+7fe66cb02000-7fe66cb04000 r--s 00006000 fe:04 1313200                    /home/blwdev/.m2/repository/com/sun/istack/istack-commons-runtime/3.0.10/istack-commons-runtime-3.0.10.jar
+7fe66cb04000-7fe66cb06000 r--s 00010000 fe:04 85                         /home/blwdev/.m2/repository/org/glassfish/jaxb/txw2/2.3.3-b02/txw2-2.3.3-b02.jar
+7fe66cb06000-7fe66cb1b000 r--s 000e8000 fe:04 84                         /home/blwdev/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.3-b02/jaxb-runtime-2.3.3-b02.jar
+7fe66cb1b000-7fe66cb1c000 r--s 00001000 fe:04 1313195                    /home/blwdev/.m2/repository/org/hibernate/hibernate-graalvm/5.4.19.Final/hibernate-graalvm-5.4.19.Final.jar
+7fe66cb1c000-7fe66cb1f000 r--s 00010000 fe:04 1313192                    /home/blwdev/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.1.0.Final/hibernate-commons-annotations-5.1.0.Final.jar
+7fe66cb1f000-7fe66cb24000 r--s 0004b000 fe:04 1313190                    /home/blwdev/.m2/repository/org/dom4j/dom4j/2.1.3/dom4j-2.1.3.jar
+7fe66cb24000-7fe66cb29000 r--s 00068000 fe:04 1270614                    /home/blwdev/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar
+7fe66cb29000-7fe66cb73000 r--s 00306000 fe:04 1313187                    /home/blwdev/.m2/repository/net/bytebuddy/byte-buddy/1.10.10/byte-buddy-1.10.10.jar
+7fe66cb73000-7fe66cb74000 r--s 00001000 fe:04 918535                     /home/blwdev/.m2/repository/io/smallrye/reactive/smallrye-reactive-converter-mutiny/1.1.0/smallrye-reactive-converter-mutiny-1.1.0.jar
+7fe66cb74000-7fe66cb76000 r--s 00000000 fe:04 918533                     /home/blwdev/.m2/repository/io/smallrye/reactive/smallrye-reactive-converter-api/1.1.0/smallrye-reactive-converter-api-1.1.0.jar
+7fe66cb76000-7fe66cb77000 r--s 00001000 fe:04 918529                     /home/blwdev/.m2/repository/io/smallrye/smallrye-context-propagation-jta/1.0.13/smallrye-context-propagation-jta-1.0.13.jar
+7fe66cb77000-7fe66cb78000 r--s 00002000 fe:04 918527                     /home/blwdev/.m2/repository/io/smallrye/reactive/mutiny-context-propagation/0.7.0/mutiny-context-propagation-0.7.0.jar
+7fe66cb78000-7fe66cb79000 r--s 00001000 fe:04 918526                     /home/blwdev/.m2/repository/io/smallrye/smallrye-context-propagation-api/1.0.13/smallrye-context-propagation-api-1.0.13.jar
+7fe66cb79000-7fe66cb7b000 r--s 00009000 fe:04 918525                     /home/blwdev/.m2/repository/io/smallrye/smallrye-context-propagation/1.0.13/smallrye-context-propagation-1.0.13.jar
+7fe66cb7b000-7fe66cb7d000 r--s 00001000 fe:04 918523                     /home/blwdev/.m2/repository/io/quarkus/quarkus-smallrye-context-propagation/1.7.0.Final/quarkus-smallrye-context-propagation-1.7.0.Final.jar
+7fe66cb7d000-7fe66cb7f000 r--s 00000000 fe:04 918519                     /home/blwdev/.m2/repository/io/quarkus/quarkus-mutiny/1.7.0.Final/quarkus-mutiny-1.7.0.Final.jar
+7fe66cb7f000-7fe66cb81000 r--s 00006000 fe:04 918518                     /home/blwdev/.m2/repository/io/quarkus/quarkus-narayana-jta/1.7.0.Final/quarkus-narayana-jta-1.7.0.Final.jar
+7fe66cb81000-7fe66cb82000 r--s 00000000 fe:04 918517                     /home/blwdev/.m2/repository/io/quarkus/quarkus-credentials/1.7.0.Final/quarkus-credentials-1.7.0.Final.jar
+7fe66cb82000-7fe66cb85000 r--s 00019000 fe:04 918515                     /home/blwdev/.m2/repository/io/agroal/agroal-pool/1.8/agroal-pool-1.8.jar
+7fe66cb85000-7fe66cb86000 r--s 00003000 fe:04 918513                     /home/blwdev/.m2/repository/io/agroal/agroal-narayana/1.8/agroal-narayana-1.8.jar
+7fe66cb86000-7fe66cb89000 r--s 0000a000 fe:04 918512                     /home/blwdev/.m2/repository/io/agroal/agroal-api/1.8/agroal-api-1.8.jar
+7fe66cb89000-7fe66cb8b000 r--s 0000b000 fe:04 1313176                    /home/blwdev/.m2/repository/org/jboss/narayana/jts/narayana-jts-integration/5.10.5.Final/narayana-jts-integration-5.10.5.Final.jar
+7fe66cb8b000-7fe66cb8e000 r--s 0000f000 fe:04 1313174                    /home/blwdev/.m2/repository/org/jboss/spec/javax/resource/jboss-connector-api_1.7_spec/1.0.0.Final/jboss-connector-api_1.7_spec-1.0.0.Final.jar
+7fe66cb8e000-7fe66cb90000 r--s 00007000 fe:04 1313160                    /home/blwdev/.m2/repository/org/jboss/jboss-transaction-spi/7.6.0.Final/jboss-transaction-spi-7.6.0.Final.jar
+7fe66cb90000-7fe66cba1000 r--s 000d5000 fe:04 1313164                    /home/blwdev/.m2/repository/org/jboss/narayana/jta/narayana-jta/5.10.5.Final/narayana-jta-5.10.5.Final.jar
+7fe66cba1000-7fe66cba2000 r--s 00001000 fe:04 918507                     /home/blwdev/.m2/repository/io/quarkus/quarkus-datasource-common/1.7.0.Final/quarkus-datasource-common-1.7.0.Final.jar
+7fe66cba2000-7fe66cba4000 r--s 00001000 fe:04 918504                     /home/blwdev/.m2/repository/io/quarkus/quarkus-datasource/1.7.0.Final/quarkus-datasource-1.7.0.Final.jar
+7fe66cba4000-7fe66cba6000 r--s 00009000 fe:04 918506                     /home/blwdev/.m2/repository/io/quarkus/quarkus-agroal/1.7.0.Final/quarkus-agroal-1.7.0.Final.jar
+7fe66cba6000-7fe66cbab000 r--s 00021000 fe:04 918505                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm/1.7.0.Final/quarkus-hibernate-orm-1.7.0.Final.jar
+7fe66cbab000-7fe66cbad000 r--s 00005000 fe:04 918502                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-orm-panache/1.7.0.Final/quarkus-hibernate-orm-panache-1.7.0.Final.jar
+7fe66cbad000-7fe66cbb1000 r--s 00031000 fe:04 1270351                    /home/blwdev/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar
+7fe66cbb1000-7fe66cbb3000 r--s 00002000 fe:04 1313156                    /home/blwdev/.m2/repository/org/jboss/resteasy/resteasy-json-p-provider/4.5.6.Final/resteasy-json-p-provider-4.5.6.Final.jar
+7fe66cbb3000-7fe66cbb5000 r--s 00007000 fe:04 1313154                    /home/blwdev/.m2/repository/jakarta/json/bind/jakarta.json.bind-api/1.0.2/jakarta.json.bind-api-1.0.2.jar
+7fe66cbb5000-7fe66cbb9000 r--s 0001f000 fe:04 1970341                    /home/blwdev/.m2/repository/org/glassfish/jakarta.json/1.1.6/jakarta.json-1.1.6.jar
+7fe66cbb9000-7fe66cbba000 r--s 00003000 fe:04 1313137                    /home/blwdev/.m2/repository/org/jboss/resteasy/resteasy-json-binding-provider/4.5.6.Final/resteasy-json-binding-provider-4.5.6.Final.jar
+7fe66cbba000-7fe66cbbb000 r--s 00000000 fe:04 918058                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jsonp/1.7.0.Final/quarkus-jsonp-1.7.0.Final.jar
+7fe66cbbb000-7fe66cbc3000 r--s 0004f000 fe:04 1313127                    /home/blwdev/.m2/repository/org/eclipse/yasson/1.0.7/yasson-1.0.7.jar
+7fe66cbc3000-7fe66cbc4000 r--s 00001000 fe:04 918498                     /home/blwdev/.m2/repository/io/quarkus/quarkus-jsonb/1.7.0.Final/quarkus-jsonb-1.7.0.Final.jar
+7fe66cbc4000-7fe66cbc7000 ---p 00000000 00:00 0 
+7fe66cbc7000-7fe66ccc5000 rw-p 00000000 00:00 0 
+7fe66ccc5000-7fe66cdf6000 r--s 00a99000 fe:04 918062                     /home/blwdev/.m2/repository/io/quarkus/quarkus-ide-launcher/1.7.0.Final/quarkus-ide-launcher-1.7.0.Final.jar
+7fe66cdf6000-7fe66cdff000 r-xp 00000000 fe:00 916335                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libmanagement.so
+7fe66cdff000-7fe66cffe000 ---p 00009000 fe:00 916335                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libmanagement.so
+7fe66cffe000-7fe66cfff000 r--p 00008000 fe:00 916335                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libmanagement.so
+7fe66cfff000-7fe66d000000 rw-p 00009000 fe:00 916335                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libmanagement.so
+7fe66d000000-7fe66d100000 rw-p 00000000 00:00 0 
+7fe66d100000-7fe66d101000 r--s 00002000 fe:04 918500                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-jsonb/1.7.0.Final/quarkus-resteasy-jsonb-1.7.0.Final.jar
+7fe66d101000-7fe66d106000 r--s 00036000 fe:04 1968288                    /home/blwdev/.m2/repository/org/glassfish/jakarta.el/3.0.3/jakarta.el-3.0.3.jar
+7fe66d106000-7fe66d108000 r--s 0000e000 fe:04 1313134                    /home/blwdev/.m2/repository/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar
+7fe66d108000-7fe66d129000 r--s 0011b000 fe:04 1313128                    /home/blwdev/.m2/repository/org/hibernate/validator/hibernate-validator/6.1.5.Final/hibernate-validator-6.1.5.Final.jar
+7fe66d129000-7fe66d12a000 r--s 00002000 fe:04 1277101                    /home/blwdev/.m2/repository/org/eclipse/microprofile/context-propagation/microprofile-context-propagation-api/1.0.1/microprofile-context-propagation-api-1.0.1.jar
+7fe66d12a000-7fe66d12e000 r--s 00025000 fe:04 918046                     /home/blwdev/.m2/repository/io/quarkus/arc/arc/1.7.0.Final/arc-1.7.0.Final.jar
+7fe66d12e000-7fe66d130000 r--s 00009000 fe:04 918047                     /home/blwdev/.m2/repository/io/quarkus/quarkus-arc/1.7.0.Final/quarkus-arc-1.7.0.Final.jar
+7fe66d130000-7fe66d131000 r--s 00006000 fe:04 917784                     /home/blwdev/.m2/repository/io/quarkus/quarkus-bootstrap-runner/1.7.0.Final/quarkus-bootstrap-runner-1.7.0.Final.jar
+7fe66d131000-7fe66d137000 r--s 00045000 fe:04 1270111                    /home/blwdev/.m2/repository/org/wildfly/common/wildfly-common/1.5.4.Final-format-001/wildfly-common-1.5.4.Final-format-001.jar
+7fe66d137000-7fe66d13e000 r--s 0007c000 fe:04 1270215                    /home/blwdev/.m2/repository/org/graalvm/sdk/graal-sdk/20.1.0/graal-sdk-20.1.0.jar
+7fe66d13e000-7fe66d13f000 r--s 00002000 fe:04 1270429                    /home/blwdev/.m2/repository/org/jboss/slf4j/slf4j-jboss-logging/1.2.0.Final/slf4j-jboss-logging-1.2.0.Final.jar
+7fe66d13f000-7fe66d141000 r--s 00009000 fe:04 1249365                    /home/blwdev/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+7fe66d141000-7fe66d144000 r--s 00015000 fe:04 1270193                    /home/blwdev/.m2/repository/org/jboss/threads/jboss-threads/3.1.1.Final/jboss-threads-3.1.1.Final.jar
+7fe66d144000-7fe66d146000 r--s 00004000 fe:04 1270188                    /home/blwdev/.m2/repository/org/jboss/logging/jboss-logging-annotations/2.1.0.Final/jboss-logging-annotations-2.1.0.Final.jar
+7fe66d146000-7fe66d14b000 r--s 0003a000 fe:04 1270187                    /home/blwdev/.m2/repository/org/jboss/logmanager/jboss-logmanager-embedded/1.0.4/jboss-logmanager-embedded-1.0.4.jar
+7fe66d14b000-7fe66d14d000 r--s 0000f000 fe:04 1189921                    /home/blwdev/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar
+7fe66d14d000-7fe66d14e000 r--s 00002000 fe:04 917787                     /home/blwdev/.m2/repository/io/smallrye/common/smallrye-common-constraint/1.1.0/smallrye-common-constraint-1.1.0.jar
+7fe66d14e000-7fe66d150000 r--s 00009000 fe:04 917794                     /home/blwdev/.m2/repository/io/smallrye/common/smallrye-common-function/1.1.0/smallrye-common-function-1.1.0.jar
+7fe66d150000-7fe66d151000 r--s 00004000 fe:04 917793                     /home/blwdev/.m2/repository/io/smallrye/common/smallrye-common-expression/1.1.0/smallrye-common-expression-1.1.0.jar
+7fe66d151000-7fe66d153000 r--s 00001000 fe:04 917788                     /home/blwdev/.m2/repository/io/smallrye/config/smallrye-config-common/1.8.5/smallrye-config-common-1.8.5.jar
+7fe66d153000-7fe66d156000 r--s 0001e000 fe:04 917786                     /home/blwdev/.m2/repository/io/smallrye/config/smallrye-config/1.8.5/smallrye-config-1.8.5.jar
+7fe66d156000-7fe66d158000 r--s 00000000 fe:04 1270281                    /home/blwdev/.m2/repository/jakarta/inject/jakarta.inject-api/1.0/jakarta.inject-api-1.0.jar
+7fe66d158000-7fe66d15a000 r--s 00005000 fe:04 1249350                    /home/blwdev/.m2/repository/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar
+7fe66d15a000-7fe66d160000 r--s 0002c000 fe:04 917785                     /home/blwdev/.m2/repository/io/quarkus/quarkus-core/1.7.0.Final/quarkus-core-1.7.0.Final.jar
+7fe66d160000-7fe66d162000 r--s 00006000 fe:04 918496                     /home/blwdev/.m2/repository/io/quarkus/quarkus-hibernate-validator/1.7.0.Final/quarkus-hibernate-validator-1.7.0.Final.jar
+7fe66d162000-7fe66d167000 r--s 00012000 fe:04 1277114                    /home/blwdev/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar
+7fe66d167000-7fe66d1d5000 r--s 01017000 fe:00 916403                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci/graal.jar
+7fe66d1d5000-7fe66d1ed000 r-xp 00000000 fe:00 916357                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnet.so
+7fe66d1ed000-7fe66d3ec000 ---p 00018000 fe:00 916357                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnet.so
+7fe66d3ec000-7fe66d3ed000 r--p 00017000 fe:00 916357                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnet.so
+7fe66d3ed000-7fe66d3ee000 rw-p 00018000 fe:00 916357                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnet.so
+7fe66d3ee000-7fe66d3ff000 r-xp 00000000 fe:00 916346                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnio.so
+7fe66d3ff000-7fe66d5fe000 ---p 00011000 fe:00 916346                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnio.so
+7fe66d5fe000-7fe66d5ff000 r--p 00010000 fe:00 916346                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnio.so
+7fe66d5ff000-7fe66d600000 rw-p 00011000 fe:00 916346                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libnio.so
+7fe66d600000-7fe66d700000 rw-p 00000000 00:00 0 
+7fe66d700000-7fe66d701000 r--s 00000000 fe:04 917779                     /home/blwdev/.m2/repository/io/smallrye/common/smallrye-common-annotation/1.1.0/smallrye-common-annotation-1.1.0.jar
+7fe66d701000-7fe66d704000 r--s 0000e000 fe:04 1277112                    /home/blwdev/.m2/repository/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
+7fe66d704000-7fe66d707000 r--s 0001b000 fe:04 1277108                    /home/blwdev/.m2/repository/com/ibm/async/asyncutil/0.1.0/asyncutil-0.1.0.jar
+7fe66d707000-7fe66d70d000 r--s 0003e000 fe:04 1277107                    /home/blwdev/.m2/repository/org/jboss/resteasy/resteasy-core-spi/4.5.6.Final/resteasy-core-spi-4.5.6.Final.jar
+7fe66d70d000-7fe66d711000 r--s 00020000 fe:04 1277105                    /home/blwdev/.m2/repository/org/jboss/spec/javax/ws/rs/jboss-jaxrs-api_2.1_spec/2.0.1.Final/jboss-jaxrs-api_2.1_spec-2.0.1.Final.jar
+7fe66d711000-7fe66d71d000 r--s 000b4000 fe:04 1277103                    /home/blwdev/.m2/repository/org/jboss/resteasy/resteasy-core/4.5.6.Final/resteasy-core-4.5.6.Final.jar
+7fe66d71d000-7fe66d71e000 r--s 00003000 fe:04 918052                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-common/1.7.0.Final/quarkus-resteasy-common-1.7.0.Final.jar
+7fe66d71e000-7fe66d71f000 r--s 00001000 fe:04 918044                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy-server-common/1.7.0.Final/quarkus-resteasy-server-common-1.7.0.Final.jar
+7fe66d71f000-7fe66d720000 r--s 00002000 fe:04 918043                     /home/blwdev/.m2/repository/io/vertx/vertx-bridge-common/3.9.2/vertx-bridge-common-3.9.2.jar
+7fe66d720000-7fe66d722000 r--s 00007000 fe:04 918039                     /home/blwdev/.m2/repository/io/vertx/vertx-auth-common/3.9.2/vertx-auth-common-3.9.2.jar
+7fe66d722000-7fe66d723000 r--s 00005000 fe:04 918037                     /home/blwdev/.m2/repository/io/vertx/vertx-web-common/3.9.2/vertx-web-common-3.9.2.jar
+7fe66d723000-7fe66d728000 r--s 00042000 fe:04 918035                     /home/blwdev/.m2/repository/io/vertx/vertx-web/3.9.2/vertx-web-3.9.2.jar
+7fe66d728000-7fe66d72a000 r--s 0000d000 fe:04 918033                     /home/blwdev/.m2/repository/io/netty/netty-codec-dns/4.1.49.Final/netty-codec-dns-4.1.49.Final.jar
+7fe66d72a000-7fe66d72e000 r--s 00021000 fe:04 918031                     /home/blwdev/.m2/repository/io/netty/netty-resolver-dns/4.1.49.Final/netty-resolver-dns-4.1.49.Final.jar
+7fe66d72e000-7fe66d730000 r--s 00007000 fe:04 1970337                    /home/blwdev/.m2/repository/io/netty/netty-resolver/4.1.49.Final/netty-resolver-4.1.49.Final.jar
+7fe66d730000-7fe66d738000 r--s 00068000 fe:04 918029                     /home/blwdev/.m2/repository/io/netty/netty-codec-http2/4.1.49.Final/netty-codec-http2-4.1.49.Final.jar
+7fe66d738000-7fe66d743000 r--s 0008b000 fe:04 1573253                    /home/blwdev/.m2/repository/io/netty/netty-codec-http/4.1.49.Final/netty-codec-http-4.1.49.Final.jar
+7fe66d743000-7fe66d748000 r--s 00019000 fe:04 918026                     /home/blwdev/.m2/repository/io/netty/netty-codec-socks/4.1.49.Final/netty-codec-socks-4.1.49.Final.jar
+7fe66d748000-7fe66d749000 r--s 00005000 fe:04 918025                     /home/blwdev/.m2/repository/io/netty/netty-handler-proxy/4.1.49.Final/netty-handler-proxy-4.1.49.Final.jar
+7fe66d749000-7fe66d74a000 r--s 00000000 fe:00 916405                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci/graal-truffle-jfr-impl.jar
+7fe66d74a000-7fe66d74b000 r--s 00005000 fe:00 916404                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci/graal-management.jar
+7fe66d74b000-7fe66d755000 r--s 0006a000 fe:04 403070                     /home/blwdev/.m2/repository/io/netty/netty-transport/4.1.49.Final/netty-transport-4.1.49.Final.jar
+7fe66d755000-7fe66d759000 r--s 00043000 fe:04 917822                     /home/blwdev/.m2/repository/io/netty/netty-buffer/4.1.49.Final/netty-buffer-4.1.49.Final.jar
+7fe66d759000-7fe66d766000 r--s 0008c000 fe:04 1704910                    /home/blwdev/.m2/repository/io/netty/netty-common/4.1.49.Final/netty-common-4.1.49.Final.jar
+7fe66d766000-7fe66d776000 r--s 0012b000 fe:04 918018                     /home/blwdev/.m2/repository/io/vertx/vertx-core/3.9.2/vertx-core-3.9.2.jar
+7fe66d776000-7fe66d77e000 r--s 00067000 fe:04 1835706                    /home/blwdev/.m2/repository/io/netty/netty-handler/4.1.49.Final/netty-handler-4.1.49.Final.jar
+7fe66d77e000-7fe66d785000 r--s 00048000 fe:04 1442278                    /home/blwdev/.m2/repository/io/netty/netty-codec/4.1.49.Final/netty-codec-4.1.49.Final.jar
+7fe66d785000-7fe66d787000 r--s 0000b000 fe:04 918016                     /home/blwdev/.m2/repository/io/quarkus/quarkus-netty/1.7.0.Final/quarkus-netty-1.7.0.Final.jar
+7fe66d787000-7fe66d789000 r--s 0000a000 fe:04 918014                     /home/blwdev/.m2/repository/io/quarkus/quarkus-vertx-core/1.7.0.Final/quarkus-vertx-core-1.7.0.Final.jar
+7fe66d789000-7fe66d78b000 r--s 00005000 fe:04 1270296                    /home/blwdev/.m2/repository/jakarta/interceptor/jakarta.interceptor-api/1.2.5/jakarta.interceptor-api-1.2.5.jar
+7fe66d78b000-7fe66d78d000 r--s 00012000 fe:04 1270285                    /home/blwdev/.m2/repository/jakarta/el/jakarta.el-api/3.0.3/jakarta.el-api-3.0.3.jar
+7fe66d78d000-7fe66d792000 r--s 00016000 fe:04 1270282                    /home/blwdev/.m2/repository/jakarta/enterprise/jakarta.enterprise.cdi-api/2.0.2/jakarta.enterprise.cdi-api-2.0.2.jar
+7fe66d792000-7fe66d793000 r--s 00002000 fe:04 1270192                    /home/blwdev/.m2/repository/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar
+7fe66d793000-7fe66d79e000 r--s 0008b000 fe:04 917812                     /home/blwdev/.m2/repository/io/smallrye/reactive/mutiny/0.7.0/mutiny-0.7.0.jar
+7fe66d79e000-7fe66d7a0000 r--s 00002000 fe:04 918021                     /home/blwdev/.m2/repository/io/quarkus/security/quarkus-security/1.1.2.Final/quarkus-security-1.1.2.Final.jar
+7fe66d7a0000-7fe66d7a1000 r--s 00001000 fe:04 917773                     /home/blwdev/.m2/repository/io/quarkus/quarkus-development-mode-spi/1.7.0.Final/quarkus-development-mode-spi-1.7.0.Final.jar
+7fe66d7a1000-7fe66d7a2000 r--s 00000000 fe:04 918022                     /home/blwdev/.m2/repository/io/quarkus/quarkus-security-runtime-spi/1.7.0.Final/quarkus-security-runtime-spi-1.7.0.Final.jar
+7fe66d7a2000-7fe66d7ab000 r--s 00048000 fe:04 918019                     /home/blwdev/.m2/repository/io/quarkus/quarkus-vertx-http/1.7.0.Final/quarkus-vertx-http-1.7.0.Final.jar
+7fe66d7ab000-7fe66d7d3000 r--s 0050b000 fe:00 916479                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/truffle/truffle-api.jar
+7fe66d7d3000-7fe66d7d4000 ---p 00000000 00:00 0 
+7fe66d7d4000-7fe66d8d4000 rw-p 00000000 00:00 0 
+7fe66d8d4000-7fe66d8d7000 ---p 00000000 00:00 0 
+7fe66d8d7000-7fe66d9d5000 rw-p 00000000 00:00 0 
+7fe66d9d5000-7fe66d9d6000 ---p 00000000 00:00 0 
+7fe66d9d6000-7fe66d9d9000 ---p 00000000 00:00 0 
+7fe66d9d9000-7fe66dbd6000 rw-p 00000000 00:00 0 
+7fe66dbd6000-7fe66dbd7000 ---p 00000000 00:00 0 
+7fe66dbd7000-7fe66dbda000 ---p 00000000 00:00 0 
+7fe66dbda000-7fe66ddd7000 rw-p 00000000 00:00 0 
+7fe66ddd7000-7fe66ddda000 ---p 00000000 00:00 0 
+7fe66ddda000-7fe66ded8000 rw-p 00000000 00:00 0 
+7fe66ded8000-7fe66e073000 r--p 00000000 fe:00 132402                     /usr/lib/locale/locale-archive
+7fe66e073000-7fe66e076000 ---p 00000000 00:00 0 
+7fe66e076000-7fe66e174000 rw-p 00000000 00:00 0 
+7fe66e174000-7fe66e177000 ---p 00000000 00:00 0 
+7fe66e177000-7fe66e275000 rw-p 00000000 00:00 0 
+7fe66e275000-7fe66e276000 ---p 00000000 00:00 0 
+7fe66e276000-7fe66ec7f000 rw-p 00000000 00:00 0 
+7fe66ec7f000-7fe66ee50000 r--s 03ca5000 fe:00 782425                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/rt.jar
+7fe66ee50000-7fe671000000 rw-p 00000000 00:00 0 
+7fe671000000-7fe671dd0000 rwxp 00000000 00:00 0 
+7fe671dd0000-7fe680000000 ---p 00000000 00:00 0 
+7fe680000000-7fe681a72000 rw-p 00000000 00:00 0 
+7fe681a72000-7fe684000000 ---p 00000000 00:00 0 
+7fe684000000-7fe684002000 r--s 00012000 fe:04 918020                     /home/blwdev/.m2/repository/io/quarkus/quarkus-resteasy/1.7.0.Final/quarkus-resteasy-1.7.0.Final.jar
+7fe684002000-7fe684003000 r--s 00001000 fe:04 1277481                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.0.0-M5/surefire-extensions-spi-3.0.0-M5.jar
+7fe684003000-7fe684008000 r--s 0008a000 fe:00 916412                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci/jvmci-hotspot.jar
+7fe684008000-7fe68400c000 r--s 0004e000 fe:00 916410                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci/jvmci-api.jar
+7fe68400c000-7fe68402e000 r--s 001a5000 fe:04 1277494                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.0.0-M4/surefire-shared-utils-3.0.0-M4.jar
+7fe68402e000-7fe684030000 r--s 00002000 fe:04 1277475                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.0.0-M5/surefire-logger-api-3.0.0-M5.jar
+7fe684030000-7fe684035000 r--s 0001f000 fe:04 1277473                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-api/3.0.0-M5/surefire-api-3.0.0-M5.jar
+7fe684035000-7fe684083000 rw-p 00000000 00:00 0 
+7fe684083000-7fe68421e000 rw-p 00000000 00:00 0 
+7fe68421e000-7fe68421f000 ---p 00000000 00:00 0 
+7fe68421f000-7fe68431f000 rw-p 00000000 00:00 0 
+7fe68431f000-7fe684320000 ---p 00000000 00:00 0 
+7fe684320000-7fe684420000 rw-p 00000000 00:00 0 
+7fe684420000-7fe68444d000 rw-p 00000000 00:00 0 
+7fe68444d000-7fe684532000 ---p 00000000 00:00 0 
+7fe684532000-7fe68455f000 rw-p 00000000 00:00 0 
+7fe68455f000-7fe684644000 ---p 00000000 00:00 0 
+7fe684644000-7fe6846b2000 rw-p 00000000 00:00 0 
+7fe6846b2000-7fe6846cd000 ---p 00000000 00:00 0 
+7fe6846cd000-7fe684706000 rw-p 00000000 00:00 0 
+7fe684706000-7fe684a8e000 ---p 00000000 00:00 0 
+7fe684a8e000-7fe684a96000 r-xp 00000000 fe:00 916356                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libzip.so
+7fe684a96000-7fe684c95000 ---p 00008000 fe:00 916356                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libzip.so
+7fe684c95000-7fe684c96000 r--p 00007000 fe:00 916356                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libzip.so
+7fe684c96000-7fe684c97000 rw-p 00008000 fe:00 916356                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libzip.so
+7fe684c97000-7fe684ca1000 r-xp 00000000 fe:00 271728                     /lib/x86_64-linux-gnu/libnss_files-2.24.so
+7fe684ca1000-7fe684ea1000 ---p 0000a000 fe:00 271728                     /lib/x86_64-linux-gnu/libnss_files-2.24.so
+7fe684ea1000-7fe684ea2000 r--p 0000a000 fe:00 271728                     /lib/x86_64-linux-gnu/libnss_files-2.24.so
+7fe684ea2000-7fe684ea3000 rw-p 0000b000 fe:00 271728                     /lib/x86_64-linux-gnu/libnss_files-2.24.so
+7fe684ea3000-7fe684ea9000 rw-p 00000000 00:00 0 
+7fe684ea9000-7fe684eb4000 r-xp 00000000 fe:00 271732                     /lib/x86_64-linux-gnu/libnss_nis-2.24.so
+7fe684eb4000-7fe6850b3000 ---p 0000b000 fe:00 271732                     /lib/x86_64-linux-gnu/libnss_nis-2.24.so
+7fe6850b3000-7fe6850b4000 r--p 0000a000 fe:00 271732                     /lib/x86_64-linux-gnu/libnss_nis-2.24.so
+7fe6850b4000-7fe6850b5000 rw-p 0000b000 fe:00 271732                     /lib/x86_64-linux-gnu/libnss_nis-2.24.so
+7fe6850b5000-7fe6850c9000 r-xp 00000000 fe:00 271722                     /lib/x86_64-linux-gnu/libnsl-2.24.so
+7fe6850c9000-7fe6852c9000 ---p 00014000 fe:00 271722                     /lib/x86_64-linux-gnu/libnsl-2.24.so
+7fe6852c9000-7fe6852ca000 r--p 00014000 fe:00 271722                     /lib/x86_64-linux-gnu/libnsl-2.24.so
+7fe6852ca000-7fe6852cb000 rw-p 00015000 fe:00 271722                     /lib/x86_64-linux-gnu/libnsl-2.24.so
+7fe6852cb000-7fe6852cd000 rw-p 00000000 00:00 0 
+7fe6852cd000-7fe6852d4000 r-xp 00000000 fe:00 271724                     /lib/x86_64-linux-gnu/libnss_compat-2.24.so
+7fe6852d4000-7fe6854d3000 ---p 00007000 fe:00 271724                     /lib/x86_64-linux-gnu/libnss_compat-2.24.so
+7fe6854d3000-7fe6854d4000 r--p 00006000 fe:00 271724                     /lib/x86_64-linux-gnu/libnss_compat-2.24.so
+7fe6854d4000-7fe6854d5000 rw-p 00007000 fe:00 271724                     /lib/x86_64-linux-gnu/libnss_compat-2.24.so
+7fe6854d5000-7fe6854fd000 r-xp 00000000 fe:00 916342                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjava.so
+7fe6854fd000-7fe6856fc000 ---p 00028000 fe:00 916342                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjava.so
+7fe6856fc000-7fe6856fd000 r--p 00027000 fe:00 916342                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjava.so
+7fe6856fd000-7fe6856ff000 rw-p 00028000 fe:00 916342                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libjava.so
+7fe6856ff000-7fe68570e000 r-xp 00000000 fe:00 916355                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libverify.so
+7fe68570e000-7fe68590d000 ---p 0000f000 fe:00 916355                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libverify.so
+7fe68590d000-7fe68590f000 r--p 0000e000 fe:00 916355                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libverify.so
+7fe68590f000-7fe685910000 rw-p 00010000 fe:00 916355                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/libverify.so
+7fe685910000-7fe685917000 r-xp 00000000 fe:00 271742                     /lib/x86_64-linux-gnu/librt-2.24.so
+7fe685917000-7fe685b16000 ---p 00007000 fe:00 271742                     /lib/x86_64-linux-gnu/librt-2.24.so
+7fe685b16000-7fe685b17000 r--p 00006000 fe:00 271742                     /lib/x86_64-linux-gnu/librt-2.24.so
+7fe685b17000-7fe685b18000 rw-p 00007000 fe:00 271742                     /lib/x86_64-linux-gnu/librt-2.24.so
+7fe685b18000-7fe685c1b000 r-xp 00000000 fe:00 271716                     /lib/x86_64-linux-gnu/libm-2.24.so
+7fe685c1b000-7fe685e1a000 ---p 00103000 fe:00 271716                     /lib/x86_64-linux-gnu/libm-2.24.so
+7fe685e1a000-7fe685e1b000 r--p 00102000 fe:00 271716                     /lib/x86_64-linux-gnu/libm-2.24.so
+7fe685e1b000-7fe685e1c000 rw-p 00103000 fe:00 271716                     /lib/x86_64-linux-gnu/libm-2.24.so
+7fe685e1c000-7fe686b80000 r-xp 00000000 fe:00 916371                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/server/libjvm.so
+7fe686b80000-7fe686d80000 ---p 00d64000 fe:00 916371                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/server/libjvm.so
+7fe686d80000-7fe686e48000 rw-p 00d64000 fe:00 916371                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/server/libjvm.so
+7fe686e48000-7fe686e7b000 rw-p 00000000 00:00 0 
+7fe686e7b000-7fe687010000 r-xp 00000000 fe:00 271708                     /lib/x86_64-linux-gnu/libc-2.24.so
+7fe687010000-7fe687210000 ---p 00195000 fe:00 271708                     /lib/x86_64-linux-gnu/libc-2.24.so
+7fe687210000-7fe687214000 r--p 00195000 fe:00 271708                     /lib/x86_64-linux-gnu/libc-2.24.so
+7fe687214000-7fe687216000 rw-p 00199000 fe:00 271708                     /lib/x86_64-linux-gnu/libc-2.24.so
+7fe687216000-7fe68721a000 rw-p 00000000 00:00 0 
+7fe68721a000-7fe68721d000 r-xp 00000000 fe:00 271714                     /lib/x86_64-linux-gnu/libdl-2.24.so
+7fe68721d000-7fe68741c000 ---p 00003000 fe:00 271714                     /lib/x86_64-linux-gnu/libdl-2.24.so
+7fe68741c000-7fe68741d000 r--p 00002000 fe:00 271714                     /lib/x86_64-linux-gnu/libdl-2.24.so
+7fe68741d000-7fe68741e000 rw-p 00003000 fe:00 271714                     /lib/x86_64-linux-gnu/libdl-2.24.so
+7fe68741e000-7fe68742b000 r-xp 00000000 fe:00 916378                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/jli/libjli.so
+7fe68742b000-7fe68762b000 ---p 0000d000 fe:00 916378                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/jli/libjli.so
+7fe68762b000-7fe68762c000 r--p 0000d000 fe:00 916378                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/jli/libjli.so
+7fe68762c000-7fe68762d000 rw-p 0000e000 fe:00 916378                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/amd64/jli/libjli.so
+7fe68762d000-7fe687646000 r-xp 00000000 fe:00 260188                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7fe687646000-7fe687845000 ---p 00019000 fe:00 260188                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7fe687845000-7fe687846000 r--p 00018000 fe:00 260188                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7fe687846000-7fe687847000 rw-p 00019000 fe:00 260188                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7fe687847000-7fe68785f000 r-xp 00000000 fe:00 271738                     /lib/x86_64-linux-gnu/libpthread-2.24.so
+7fe68785f000-7fe687a5e000 ---p 00018000 fe:00 271738                     /lib/x86_64-linux-gnu/libpthread-2.24.so
+7fe687a5e000-7fe687a5f000 r--p 00017000 fe:00 271738                     /lib/x86_64-linux-gnu/libpthread-2.24.so
+7fe687a5f000-7fe687a60000 rw-p 00018000 fe:00 271738                     /lib/x86_64-linux-gnu/libpthread-2.24.so
+7fe687a60000-7fe687a64000 rw-p 00000000 00:00 0 
+7fe687a64000-7fe687a87000 r-xp 00000000 fe:00 271700                     /lib/x86_64-linux-gnu/ld-2.24.so
+7fe687a87000-7fe687a88000 r--s 00002000 fe:00 916480                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/truffle/locator.jar
+7fe687a88000-7fe687b59000 rw-p 00000000 00:00 0 
+7fe687b59000-7fe687b6a000 rw-p 00000000 00:00 0 
+7fe687b6a000-7fe687b6b000 ---p 00000000 00:00 0 
+7fe687b6b000-7fe687b6e000 ---p 00000000 00:00 0 
+7fe687b6e000-7fe687c6f000 rw-p 00000000 00:00 0 
+7fe687c6f000-7fe687c71000 r--s 00018000 fe:04 1277479                    /home/blwdev/.m2/repository/org/apache/maven/surefire/surefire-booter/3.0.0-M5/surefire-booter-3.0.0-M5.jar
+7fe687c71000-7fe687c72000 r--s 00006000 fe:04 1319650                    /home/blwdev/personal_git/quarkus-examples/quarkus-training-ibm/super-fights/hero-management/target/surefire/surefirebooter1795456809583149415.jar
+7fe687c72000-7fe687c7a000 r--s 0007b000 fe:00 916380                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/boot/graal-sdk.jar
+7fe687c7a000-7fe687c7c000 r--s 0000d000 fe:00 916381                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/boot/graaljs-scriptengine.jar
+7fe687c7c000-7fe687c7d000 r--s 00005000 fe:00 782434                     /usr/lib/jvm/graalvm-ce-java8-20.1.0/jre/lib/jvmci-services.jar
+7fe687c7d000-7fe687c85000 rw-s 00000000 fe:03 184                        /tmp/hsperfdata_blwdev/24172
+7fe687c85000-7fe687c86000 rw-p 00000000 00:00 0 
+7fe687c86000-7fe687c87000 ---p 00000000 00:00 0 
+7fe687c87000-7fe687c88000 r--p 00023000 fe:00 271700                     /lib/x86_64-linux-gnu/ld-2.24.so
+7fe687c88000-7fe687c89000 rw-p 00024000 fe:00 271700                     /lib/x86_64-linux-gnu/ld-2.24.so
+7fe687c89000-7fe687c8a000 rw-p 00000000 00:00 0 
+7ffe51ab2000-7ffe51ad3000 rw-p 00000000 00:00 0                          [stack]
+7ffe51b2a000-7ffe51b2c000 r--p 00000000 00:00 0                          [vvar]
+7ffe51b2c000-7ffe51b2e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+java_command: /home/blwdev/personal_git/quarkus-examples/quarkus-training-ibm/super-fights/hero-management/target/surefire/surefirebooter1795456809583149415.jar /home/blwdev/personal_git/quarkus-examples/quarkus-training-ibm/super-fights/hero-management/target/surefire 2020-08-20T21-20-43_423-jvmRun1 surefire7521412173742043716tmp surefire_02830549993971495891tmp
+java_class_path (initial): /home/blwdev/personal_git/quarkus-examples/quarkus-training-ibm/super-fights/hero-management/target/surefire/surefirebooter1795456809583149415.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/graalvm
+PATH=/opt/maven/bin:/opt/gradle/gradle-4.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/usr/lib/jvm/graalvm/bin
+USERNAME=blwdev
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xb33e90], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xb33e90], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x96ea40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x96ea40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x96ea40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x96ea40], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x96e910], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x96ef30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x96ef30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x96ef30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x96ef30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
+NAME="Debian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+uname:Linux 4.9.0-8-amd64 #1 SMP Debian 4.9.144-3 (2019-02-02) x86_64
+libc:glibc 2.24 NPTL 2.24 
+rlimit: STACK 8192k, CORE 0k, NPROC 13044, NOFILE 4096, AS infinity
+load average:1.57 0.79 0.73
+
+/proc/meminfo:
+MemTotal:        3363136 kB
+MemFree:           80556 kB
+MemAvailable:      21084 kB
+Buffers:             672 kB
+Cached:            63820 kB
+SwapCached:         9012 kB
+Active:          2492560 kB
+Inactive:         645792 kB
+Active(anon):    2483032 kB
+Inactive(anon):   636132 kB
+Active(file):       9528 kB
+Inactive(file):     9660 kB
+Unevictable:          48 kB
+Mlocked:              48 kB
+SwapTotal:       3428348 kB
+SwapFree:              0 kB
+Dirty:               268 kB
+Writeback:             0 kB
+AnonPages:       3065344 kB
+Mapped:            61924 kB
+Shmem:             45096 kB
+Slab:              59760 kB
+SReclaimable:      22964 kB
+SUnreclaim:        36796 kB
+KernelStack:       13504 kB
+PageTables:        44976 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5109916 kB
+Committed_AS:   11481004 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      116672 kB
+DirectMap2M:     3313664 kB
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-1
+cpu_memory_nodes: 0
+active_processor_count: 2
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 3244376064
+memory_max_usage_in_bytes: 3277819904
+
+
+CPU:total 2 (initial active 2) (2 cores per cpu, 1 threads per core) family 6 model 78 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, 3dnowpref, lzcnt, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+stepping	: 3
+cpu MHz		: 2496.002
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single kaiser fsgsbase avx2 invpcid rdseed clflushopt flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 4992.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+stepping	: 3
+cpu MHz		: 2496.002
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single kaiser fsgsbase avx2 invpcid rdseed clflushopt flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 4992.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3363136k(80556k free), swap 3428348k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM GraalVM CE 20.1.0 (25.252-b09-jvmci-20.1-b02) for linux-amd64 JRE (1.8.0), built on Apr 21 2020 13:06:54 by "buildslave" with gcc 7.3.0
+
+time: Thu Aug 20 21:21:04 2020
+timezone: CEST
+elapsed time: 19 seconds (0d 0h 0m 19s)
+

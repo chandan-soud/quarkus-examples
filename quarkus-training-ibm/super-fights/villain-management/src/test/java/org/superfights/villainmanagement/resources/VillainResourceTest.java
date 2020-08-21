@@ -148,6 +148,16 @@ public class VillainResourceTest {
 		assertEquals(NB_VILLAINS, villains.size());
 	}
 
+	@Test
+	void shouldPingOpenAPI() {
+		given().header(ACCEPT, APPLICATION_JSON).when().get("/openapi").then().statusCode(OK.getStatusCode());
+	}
+
+	@Test
+	void shouldPingSwaggerUI() {
+		given().when().get("/swagger-ui").then().statusCode(OK.getStatusCode());
+	}
+
 	private TypeRef<List<Villain>> getVillainTypeRef() {
 		return new TypeRef<List<Villain>>() {
 			// Kept empty on purpose

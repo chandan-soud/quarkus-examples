@@ -1,4 +1,4 @@
-package org.superfights.villainmanagement.entities.config;
+package org.superfights.villainmanagement.config;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -15,6 +15,6 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 		@Server(url = "http://localhost:8084") }, externalDocs = @ExternalDocumentation(url = "https://github.com/quarkusio/quarkus-workshops", description = "All the Quarkus workshops"), tags = {
 				@Tag(name = "generic", description = "apis for generic testing"),
 				@Tag(name = "villains", description = "apis for villain resource") })
-public class VillainConfig extends Application {
+public class VillainApiConfig extends Application {
 
 }

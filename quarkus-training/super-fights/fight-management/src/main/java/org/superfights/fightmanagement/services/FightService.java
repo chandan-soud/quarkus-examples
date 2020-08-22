@@ -8,10 +8,16 @@ import java.util.List;
 import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
+import org.superfights.fightmanagement.clients.HeroApiClient;
+import org.superfights.fightmanagement.clients.VillainApiClient;
 import org.superfights.fightmanagement.dtos.Fighters;
+import org.superfights.fightmanagement.dtos.Hero;
+import org.superfights.fightmanagement.dtos.Villain;
 import org.superfights.fightmanagement.entities.Fight;
 
 @ApplicationScoped
@@ -21,6 +27,14 @@ public class FightService {
 	private static final Logger LOGGER = Logger.getLogger(FightService.class);
 
 	private final Random random = new Random();
+
+	@Inject
+	@RestClient
+	HeroApiClient heroApiClient;
+
+	@Inject
+	@RestClient
+	VillainApiClient villainApiClient;
 
 	public List<Fight> findAllFights() {
 		return Fight.listAll();
@@ -82,8 +96,20 @@ public class FightService {
 	}
 
 	public Fighters findRandomFighters() {
-		// Will be implemented later
-		return null;
+		Hero hero = findRandomHero();
+		Villain villain = findRandomVillain();
+		Fighters fighters = new Fighters();
+		fighters.hero = hero;
+		fighters.villain = villain;
+		return fighters;
+	}
+
+	public Hero findRandomHero() {
+		return heroApiClient.getRandomHero();
+	}
+
+	public Villain findRandomVillain() {
+		return villainApiClient.getRandomVillain();
 	}
 
 }

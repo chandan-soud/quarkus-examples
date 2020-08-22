@@ -1,4 +1,4 @@
-package org.superfights.fightmanagement.clients;
+package org.superfights.fightmanagement.dtos;
 
 import javax.validation.constraints.NotNull;
 

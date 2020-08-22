@@ -2,9 +2,6 @@ package org.superfights.fightmanagement.dtos;
 
 import javax.validation.constraints.NotNull;
 
-import org.superfights.fightmanagement.clients.Hero;
-import org.superfights.fightmanagement.clients.Villain;
-
 public class Fighters {
 
 	@NotNull

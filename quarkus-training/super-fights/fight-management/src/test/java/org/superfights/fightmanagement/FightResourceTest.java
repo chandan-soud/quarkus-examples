@@ -20,9 +20,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.superfights.fightmanagement.clients.Hero;
-import org.superfights.fightmanagement.clients.Villain;
 import org.superfights.fightmanagement.dtos.Fighters;
+import org.superfights.fightmanagement.dtos.Hero;
+import org.superfights.fightmanagement.dtos.Villain;
 import org.superfights.fightmanagement.entities.Fight;
 
 import io.quarkus.test.common.QuarkusTestResource;

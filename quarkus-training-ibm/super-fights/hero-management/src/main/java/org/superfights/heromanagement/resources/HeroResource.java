@@ -21,12 +21,14 @@ import javax.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.jboss.logging.Logger;
 import org.superfights.heromanagement.entities.Hero;
 import org.superfights.heromanagement.services.HeroService;
 
+@Tag(name = "heroes", description = "apis for hero resource")
 @Path("/api/heroes")
 @Produces(MediaType.APPLICATION_JSON)
 public class HeroResource {
@@ -38,6 +40,7 @@ public class HeroResource {
 
 	@Operation(summary = "Returns \"Hello Heroes!\" string, serves as a dummy api")
 	@APIResponse(responseCode = "200", content = @Content(mediaType = MediaType.TEXT_PLAIN, schema = @Schema(implementation = String.class)))
+	@Tag(ref = "generic")
 	@GET
 	@Path("/hello")
 	@Produces(MediaType.TEXT_PLAIN)

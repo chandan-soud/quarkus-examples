@@ -10,9 +10,9 @@ import io.quarkus.runtime.StartupEvent;
 import io.quarkus.runtime.configuration.ProfileManager;
 
 @ApplicationScoped
-public class HeroApiBannerConfig {
+public class HeroApplicationLifeCycleConfig {
 
-	private static final Logger LOGGER = Logger.getLogger(HeroApiBannerConfig.class);
+	private static final Logger LOGGER = Logger.getLogger(HeroApplicationLifeCycleConfig.class);
 
 	void onStart(@Observes StartupEvent startupEvent) {
 		LOGGER.info("  _   _                      _    ____ ___ ");

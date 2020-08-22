@@ -13,8 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @ApplicationPath("/")
 @OpenAPIDefinition(info = @Info(title = "Hero API", description = "This API allows CRUD operations on a hero", version = "1.0.0", contact = @Contact(name = "Quarkus", url = "https://github.com/quarkusio")), servers = {
 		@Server(url = "http://localhost:8083") }, externalDocs = @ExternalDocumentation(url = "https://github.com/quarkusio/quarkus-workshops", description = "All the Quarkus workshops"), tags = {
-				@Tag(name = "api", description = "Public that can be used by anybody"),
-				@Tag(name = "heroes", description = "Anybody interested in heroes") })
-public class HeroConfig extends Application {
+				@Tag(name = "generic", description = "apis for generic testing") })
+public class HeroApiConfig extends Application {
 
 }

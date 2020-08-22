@@ -1,0 +1,30 @@
+package org.superfights.fightmanagement.clients;
+
+import javax.enterprise.context.ApplicationScoped;
+
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.superfights.fightmanagement.dtos.Villain;
+
+import io.quarkus.test.Mock;
+
+@Mock
+@ApplicationScoped
+@RestClient
+public class MockVillainApiClient implements VillainApiClient {
+
+	public static final String DEFAULT_VILLAIN_NAME = "Super Chocolatine";
+	public static final String DEFAULT_VILLAIN_PICTURE = "super_chocolatine.png";
+	public static final String DEFAULT_VILLAIN_POWERS = "does not eat pain au chocolat";
+	public static final int DEFAULT_VILLAIN_LEVEL = 42;
+
+	@Override
+	public Villain getRandomVillain() {
+		Villain villain = new Villain();
+		villain.name = DEFAULT_VILLAIN_NAME;
+		villain.picture = DEFAULT_VILLAIN_PICTURE;
+		villain.powers = DEFAULT_VILLAIN_POWERS;
+		villain.level = DEFAULT_VILLAIN_LEVEL;
+		return villain;
+	}
+
+}

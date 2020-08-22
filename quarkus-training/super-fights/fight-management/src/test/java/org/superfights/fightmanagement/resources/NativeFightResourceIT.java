@@ -1,4 +1,4 @@
-package org.superfights.fightmanagement;
+package org.superfights.fightmanagement.resources;
 
 import io.quarkus.test.junit.NativeImageTest;
 

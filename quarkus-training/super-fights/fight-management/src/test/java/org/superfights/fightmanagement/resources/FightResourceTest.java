@@ -1,4 +1,4 @@
-package org.superfights.fightmanagement;
+package org.superfights.fightmanagement.resources;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -20,6 +20,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.superfights.fightmanagement.clients.MockHeroApiClient;
+import org.superfights.fightmanagement.clients.MockVillainApiClient;
 import org.superfights.fightmanagement.dtos.Fighters;
 import org.superfights.fightmanagement.dtos.Hero;
 import org.superfights.fightmanagement.dtos.Villain;
@@ -103,6 +105,17 @@ public class FightResourceTest {
 		List<Fight> fights = get("/api/fights").then().statusCode(OK.getStatusCode())
 				.header(CONTENT_TYPE, APPLICATION_JSON).extract().body().as(getFightTypeRef());
 		assertEquals(NB_FIGHTS + 1, fights.size());
+	}
+
+	@Test
+	void shouldGetRandomFighters() {
+		given().when().get("/api/fights/randomfighters").then().statusCode(OK.getStatusCode())
+				.header(CONTENT_TYPE, APPLICATION_JSON).body("hero.name", Is.is(MockHeroApiClient.DEFAULT_HERO_NAME))
+				.body("hero.picture", Is.is(MockHeroApiClient.DEFAULT_HERO_PICTURE))
+				.body("hero.level", Is.is(MockHeroApiClient.DEFAULT_HERO_LEVEL))
+				.body("villain.name", Is.is(MockVillainApiClient.DEFAULT_VILLAIN_NAME))
+				.body("villain.picture", Is.is(MockVillainApiClient.DEFAULT_VILLAIN_PICTURE))
+				.body("villain.level", Is.is(MockVillainApiClient.DEFAULT_VILLAIN_LEVEL));
 	}
 
 	@Test

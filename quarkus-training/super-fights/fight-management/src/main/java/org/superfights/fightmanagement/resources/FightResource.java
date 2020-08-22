@@ -1,4 +1,4 @@
-package org.superfights.fightmanagement;
+package org.superfights.fightmanagement.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;

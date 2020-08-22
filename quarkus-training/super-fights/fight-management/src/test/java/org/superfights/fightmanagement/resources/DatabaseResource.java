@@ -1,4 +1,4 @@
-package org.superfights.fightmanagement;
+package org.superfights.fightmanagement.resources;
 
 import java.util.Collections;
 import java.util.Map;

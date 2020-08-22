@@ -11,6 +11,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.superfights.fightmanagement.clients.HeroApiClient;
@@ -104,12 +105,34 @@ public class FightService {
 		return fighters;
 	}
 
+	@Fallback(fallbackMethod = "fallbackRandomHero")
 	public Hero findRandomHero() {
 		return heroApiClient.getRandomHero();
 	}
 
+	@Fallback(fallbackMethod = "fallbackRandomVillain")
 	public Villain findRandomVillain() {
 		return villainApiClient.getRandomVillain();
+	}
+
+	public Hero fallbackRandomHero() {
+		LOGGER.warn("Falling back on Hero");
+		Hero hero = new Hero();
+		hero.name = "Fallback Hero";
+		hero.picture = "https://dummyimage.com/280x380/1e8fff/ffffff&text=Fallback+Hero";
+		hero.powers = "Fallback Hero powers";
+		hero.level = 45;
+		return hero;
+	}
+
+	public Villain fallbackRandomVillain() {
+		LOGGER.warn("Falling back on Villain");
+		Villain villain = new Villain();
+		villain.name = "Fallback Villain";
+		villain.picture = "https://dummyimage.com/280x380/b22222/ffffff&text=Fallback+Villain";
+		villain.powers = "Fallback Villain powers";
+		villain.level = 42;
+		return villain;
 	}
 
 }

@@ -1,0 +1,56 @@
+Microservice frameworks:
+Spring Boot     https://github.com/spring-projects/spring-framework/wiki/GraalVM-native-image-support
+Quarkus         https://quarkus.io/guides/building-native-image#configuring-graalvm
+Micronaut       https://docs.micronaut.io/latest/guide/index.html#graal
+Helidon         https://helidon.io/docs/latest/#/about/01_overview
+
+GraalVM         https://www.graalvm.org/
+
+MicroProfile    https://projects.eclipse.org/projects/technology.microprofile
+Jaeger          https://www.jaegertracing.io/
+ReactiveX       http://reactivex.io/
+Vert.x          https://vertx.io/
+akka            https://akka.io/
+RxJava          https://github.com/ReactiveX/RxJava/wiki
+Spring Reactor  https://spring.io/reactive
+
+-------------------------------------------------------------------------------------------------------------------------
+Workshop details:
+https://quarkus.io/quarkus-workshops/super-heroes/
+https://github.com/quarkusio/quarkus-workshops
+
+-------------------------------------------------------------------------------------------------------------------------
+Setup:
+1. Install Quarkus plug-in from Eclipse Market Place
+2. Install GraalVM from https://www.graalvm.org/docs/getting-started-with-graalvm/linux/
+  Follow the steps mentioned in https://gist.github.com/ricardozanini/fa65e485251913e1467837b1c5a8ed28
+   -> Download the appropriate archive from https://github.com/graalvm/graalvm-ce-builds/releases
+   -> Extract the archive file:  
+               $ tar xz -f graalvm-ce-java8-linux-amd64-20.1.0.tar.gz
+   -> Move extracted GraalVM to usr/lib/jvm:  
+               $ mv graalvm-ce-java8-20.1.0 /usr/lib/jvm/
+   -> Create a symbolic link:  
+               $ ln -s graalvm-ce-java8-20.1.0 graalvm
+   -> Add following in ~/.profile
+         GRAALVM_HOME="/usr/lib/jvm/graalvm"
+		 export PATH="$PATH:$GRAALVM_HOME/bin"
+      * Apart from above two settings, JAVA_HOME must also be set to GRAALVM_HOME, otherwise "$ ./mvnw quarkus:dev" doesn't work. i.e   
+	           $ export JAVA_HOME=$GRAALVM_HOME
+   -> Install GraalVM Native Image:  
+               $ gu install native-image
+3. Install docker-compose as per https://docs.docker.com/compose/install/
+		   
+--------------------------------------------------------------------------------------------------------------------------
+Ports used by the apps in the workshop:
+tcp:8080    // UI
+tcp:8082    // Fight REST API
+tcp:8083    // Hero REST API
+tcp:8084    // Villain REST API
+tcp:5432    // Postgres
+tcp:9090    // Prometheus
+tcp:2181    // Zookeeper
+tcp:9092    // Kafka		   
+
+--------------------------------------------------------------------------------------------------------------------------
+Run an Quarkus app by executing following command from the app root directory:
+               $ ./mvnw quarkus:dev

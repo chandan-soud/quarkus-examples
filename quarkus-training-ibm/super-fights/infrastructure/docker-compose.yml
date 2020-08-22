@@ -1,0 +1,14 @@
+version: "3"
+services:
+    database:
+        image: "postgres:10.5"
+        container_name: "super-database"
+        restart: always
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./postgres/data:/var/lib/postgresql/data
+            - ./db-init/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh

@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.superfights.fightmanagement.clients.HeroApiClient;
@@ -36,6 +38,10 @@ public class FightService {
 	@Inject
 	@RestClient
 	VillainApiClient villainApiClient;
+
+	@Inject
+	@Channel("fights")
+	Emitter<Fight> fightEmitter;
 
 	public List<Fight> findAllFights() {
 		return Fight.listAll();
@@ -63,6 +69,10 @@ public class FightService {
 
 		fight.fightDate = Instant.now();
 		Fight.persist(fight);
+
+		// Send the fight to Kafka
+		fightEmitter.send(fight);
+
 		return fight;
 	}
 
